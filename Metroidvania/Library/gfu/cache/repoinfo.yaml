@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cacheType: 1
-  lastUpdatedAtString: 2022-07-07T11:56:24.729+01:00
-  initializedAtString: 2022-07-07T11:51:49.487+01:00
+  lastUpdatedAtString: 2022-07-07T16:04:36.204+01:00
+  initializedAtString: 2022-07-07T16:04:36.204+01:00
   currentGitRemote:
     name: origin
     url: https://github.com/JoshuaSeymour99/FinalProject.git
@@ -24,14 +24,14 @@ MonoBehaviour:
     function: 0
     token: 
   currentGitBranch:
-    name: master
-    tracking: 
+    name: main
+    tracking: origin/main
   currentConfigBranch:
-    name: master
+    name: main
     remote:
-      name: 
-      url: 
-    trackingBranch: 
+      name: origin
+      url: https://github.com/JoshuaSeymour99/FinalProject.git
+    trackingBranch: main
   currentConfigRemote:
     name: origin
     url: https://github.com/JoshuaSeymour99/FinalProject.git
