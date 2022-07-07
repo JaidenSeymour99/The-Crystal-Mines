@@ -1,0 +1,168 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1
+MonoBehaviour:
+  m_ObjectHideFlags: 61
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 995438498, guid: 68c7e4565cde54155bb78d8e935f1ddb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cacheType: 6
+  lastUpdatedAtString: 2022-07-07T12:01:33.068+01:00
+  initializedAtString: 2022-07-07T11:51:49.752+01:00
+  entries:
+  - path: Packages\manifest.json
+    fullPath: D:\College\Yr4Project\Unity\Metroidvania\Packages\manifest.json
+    projectPath: Packages\manifest.json
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: Packages\packages-lock.json
+    fullPath: D:\College\Yr4Project\Unity\Metroidvania\Packages\packages-lock.json
+    projectPath: Packages\packages-lock.json
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: ProjectSettings\AudioManager.asset
+    fullPath: D:\College\Yr4Project\Unity\Metroidvania\ProjectSettings\AudioManager.asset
+    projectPath: ProjectSettings\AudioManager.asset
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: ProjectSettings\ClusterInputManager.asset
+    fullPath: D:\College\Yr4Project\Unity\Metroidvania\ProjectSettings\ClusterInputManager.asset
+    projectPath: ProjectSettings\ClusterInputManager.asset
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: ProjectSettings\DynamicsManager.asset
+    fullPath: D:\College\Yr4Project\Unity\Metroidvania\ProjectSettings\DynamicsManager.asset
+    projectPath: ProjectSettings\DynamicsManager.asset
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: ProjectSettings\EditorBuildSettings.asset
+    fullPath: D:\College\Yr4Project\Unity\Metroidvania\ProjectSettings\EditorBuildSettings.asset
+    projectPath: ProjectSettings\EditorBuildSettings.asset
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: ProjectSettings\EditorSettings.asset
+    fullPath: D:\College\Yr4Project\Unity\Metroidvania\ProjectSettings\EditorSettings.asset
+    projectPath: ProjectSettings\EditorSettings.asset
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: ProjectSettings\GraphicsSettings.asset
+    fullPath: D:\College\Yr4Project\Unity\Metroidvania\ProjectSettings\GraphicsSettings.asset
+    projectPath: ProjectSettings\GraphicsSettings.asset
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: ProjectSettings\InputManager.asset
+    fullPath: D:\College\Yr4Project\Unity\Metroidvania\ProjectSettings\InputManager.asset
+    projectPath: ProjectSettings\InputManager.asset
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: ProjectSettings\NavMeshAreas.asset
+    fullPath: D:\College\Yr4Project\Unity\Metroidvania\ProjectSettings\NavMeshAreas.asset
+    projectPath: ProjectSettings\NavMeshAreas.asset
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: ProjectSettings\NetworkManager.asset
+    fullPath: D:\College\Yr4Project\Unity\Metroidvania\ProjectSettings\NetworkManager.asset
+    projectPath: ProjectSettings\NetworkManager.asset
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: ProjectSettings\PackageManagerSettings.asset
+    fullPath: D:\College\Yr4Project\Unity\Metroidvania\ProjectSettings\PackageManagerSettings.asset
+    projectPath: ProjectSettings\PackageManagerSettings.asset
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: ProjectSettings\Physics2DSettings.asset
+    fullPath: D:\College\Yr4Project\Unity\Metroidvania\ProjectSettings\Physics2DSettings.asset
+    projectPath: ProjectSettings\Physics2DSettings.asset
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: ProjectSettings\PresetManager.asset
+    fullPath: D:\College\Yr4Project\Unity\Metroidvania\ProjectSettings\PresetManager.asset
+    projectPath: ProjectSettings\PresetManager.asset
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: ProjectSettings\ProjectSettings.asset
+    fullPath: D:\College\Yr4Project\Unity\Metroidvania\ProjectSettings\ProjectSettings.asset
+    projectPath: ProjectSettings\ProjectSettings.asset
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: ProjectSettings\ProjectVersion.txt
+    fullPath: D:\College\Yr4Project\Unity\Metroidvania\ProjectSettings\ProjectVersion.txt
+    projectPath: ProjectSettings\ProjectVersion.txt
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: ProjectSettings\QualitySettings.asset
+    fullPath: D:\College\Yr4Project\Unity\Metroidvania\ProjectSettings\QualitySettings.asset
+    projectPath: ProjectSettings\QualitySettings.asset
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: ProjectSettings\TagManager.asset
+    fullPath: D:\College\Yr4Project\Unity\Metroidvania\ProjectSettings\TagManager.asset
+    projectPath: ProjectSettings\TagManager.asset
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: ProjectSettings\TimelineSettings.asset
+    fullPath: D:\College\Yr4Project\Unity\Metroidvania\ProjectSettings\TimelineSettings.asset
+    projectPath: ProjectSettings\TimelineSettings.asset
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: ProjectSettings\TimeManager.asset
+    fullPath: D:\College\Yr4Project\Unity\Metroidvania\ProjectSettings\TimeManager.asset
+    projectPath: ProjectSettings\TimeManager.asset
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: ProjectSettings\UnityConnectSettings.asset
+    fullPath: D:\College\Yr4Project\Unity\Metroidvania\ProjectSettings\UnityConnectSettings.asset
+    projectPath: ProjectSettings\UnityConnectSettings.asset
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: ProjectSettings\VersionControlSettings.asset
+    fullPath: D:\College\Yr4Project\Unity\Metroidvania\ProjectSettings\VersionControlSettings.asset
+    projectPath: ProjectSettings\VersionControlSettings.asset
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: ProjectSettings\VFXManager.asset
+    fullPath: D:\College\Yr4Project\Unity\Metroidvania\ProjectSettings\VFXManager.asset
+    projectPath: ProjectSettings\VFXManager.asset
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: ProjectSettings\XRSettings.asset
+    fullPath: D:\College\Yr4Project\Unity\Metroidvania\ProjectSettings\XRSettings.asset
+    projectPath: ProjectSettings\XRSettings.asset
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UserSettings\EditorUserSettings.asset
+    fullPath: D:\College\Yr4Project\Unity\Metroidvania\UserSettings\EditorUserSettings.asset
+    projectPath: UserSettings\EditorUserSettings.asset
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
