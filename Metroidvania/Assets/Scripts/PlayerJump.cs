@@ -83,19 +83,5 @@ public class PlayerJump : MonoBehaviour
     {
         Gizmos.DrawSphere(groundCheck.position, radOfCircle);
     }
-    private void FixedUpdate()
-    {
-        HandleLayers();
-    }
-    private void HandleLayers()
-    {
-        if(!grounded)
-        {
-            myAnimator.SetLayerWeight(1,1);
-        } else 
-        {
-            myAnimator.SetLayerWeight(1,0);
-        }
-    }
     
 }
