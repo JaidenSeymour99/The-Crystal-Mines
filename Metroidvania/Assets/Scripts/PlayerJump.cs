@@ -19,7 +19,7 @@ public class PlayerJump : MonoBehaviour
     [SerializeField]private bool grounded;
     [SerializeField]private Transform groundCheck;
     
-    [Header("Ground Details")]
+    [Header("Rigidbody and Animator")]
     private Rigidbody2D rb; 
     private Animator myAnimator; 
 
