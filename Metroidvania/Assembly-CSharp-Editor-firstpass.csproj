@@ -279,6 +279,9 @@
  <Reference Include="UnityEditor.WebGL.Extensions">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.20f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll</HintPath>
  </Reference>
+ <Reference Include="UnityEditor.OSXStandalone.Extensions">
+ <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.20f1/Editor/Data/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEditor.Android.Extensions">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.20f1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll</HintPath>
  </Reference>
@@ -289,34 +292,34 @@
  <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.20f1/Editor/Data/PlaybackEngines/MetroSupport/UnityEditor.UWP.Extensions.dll</HintPath>
  </Reference>
  <Reference Include="GitHub.Logging">
- <HintPath>D:/College/Yr4Project/Unity/GithubFile/FinalProject/FinalProject/Metroidvania/Assets/Plugins/GitHub/Editor/GitHub.Logging.dll</HintPath>
+ <HintPath>N:/Final Year Project/FinalProject/Metroidvania/Assets/Plugins/GitHub/Editor/GitHub.Logging.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Plastic.Newtonsoft.Json">
- <HintPath>D:/College/Yr4Project/Unity/GithubFile/FinalProject/FinalProject/Metroidvania/Library/PackageCache/com.unity.collab-proxy@1.11.2/Lib/Editor/PlasticSCM/Unity.Plastic.Newtonsoft.Json.dll</HintPath>
+ <HintPath>N:/Final Year Project/FinalProject/Metroidvania/Library/PackageCache/com.unity.collab-proxy@1.11.2/Lib/Editor/PlasticSCM/Unity.Plastic.Newtonsoft.Json.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Plastic.Antlr3.Runtime">
- <HintPath>D:/College/Yr4Project/Unity/GithubFile/FinalProject/FinalProject/Metroidvania/Library/PackageCache/com.unity.collab-proxy@1.11.2/Lib/Editor/PlasticSCM/Unity.Plastic.Antlr3.Runtime.dll</HintPath>
+ <HintPath>N:/Final Year Project/FinalProject/Metroidvania/Library/PackageCache/com.unity.collab-proxy@1.11.2/Lib/Editor/PlasticSCM/Unity.Plastic.Antlr3.Runtime.dll</HintPath>
  </Reference>
  <Reference Include="sfw.net">
- <HintPath>D:/College/Yr4Project/Unity/GithubFile/FinalProject/FinalProject/Metroidvania/Assets/Plugins/GitHub/Editor/sfw.net.dll</HintPath>
+ <HintPath>N:/Final Year Project/FinalProject/Metroidvania/Assets/Plugins/GitHub/Editor/sfw.net.dll</HintPath>
  </Reference>
  <Reference Include="log4netPlastic">
- <HintPath>D:/College/Yr4Project/Unity/GithubFile/FinalProject/FinalProject/Metroidvania/Library/PackageCache/com.unity.collab-proxy@1.11.2/Lib/Editor/PlasticSCM/log4netPlastic.dll</HintPath>
+ <HintPath>N:/Final Year Project/FinalProject/Metroidvania/Library/PackageCache/com.unity.collab-proxy@1.11.2/Lib/Editor/PlasticSCM/log4netPlastic.dll</HintPath>
  </Reference>
  <Reference Include="GitHub.Unity.45">
- <HintPath>D:/College/Yr4Project/Unity/GithubFile/FinalProject/FinalProject/Metroidvania/Assets/Plugins/GitHub/Editor/GitHub.Unity.45.dll</HintPath>
+ <HintPath>N:/Final Year Project/FinalProject/Metroidvania/Assets/Plugins/GitHub/Editor/GitHub.Unity.45.dll</HintPath>
  </Reference>
  <Reference Include="GitHub.UnityShim">
- <HintPath>D:/College/Yr4Project/Unity/GithubFile/FinalProject/FinalProject/Metroidvania/Assets/Plugins/GitHub/Editor/GitHub.UnityShim.dll</HintPath>
+ <HintPath>N:/Final Year Project/FinalProject/Metroidvania/Assets/Plugins/GitHub/Editor/GitHub.UnityShim.dll</HintPath>
  </Reference>
  <Reference Include="GitHub.Api.45">
- <HintPath>D:/College/Yr4Project/Unity/GithubFile/FinalProject/FinalProject/Metroidvania/Assets/Plugins/GitHub/Editor/GitHub.Api.45.dll</HintPath>
+ <HintPath>N:/Final Year Project/FinalProject/Metroidvania/Assets/Plugins/GitHub/Editor/GitHub.Api.45.dll</HintPath>
  </Reference>
  <Reference Include="unityplastic">
- <HintPath>D:/College/Yr4Project/Unity/GithubFile/FinalProject/FinalProject/Metroidvania/Library/PackageCache/com.unity.collab-proxy@1.11.2/Lib/Editor/PlasticSCM/unityplastic.dll</HintPath>
+ <HintPath>N:/Final Year Project/FinalProject/Metroidvania/Library/PackageCache/com.unity.collab-proxy@1.11.2/Lib/Editor/PlasticSCM/unityplastic.dll</HintPath>
  </Reference>
  <Reference Include="nunit.framework">
- <HintPath>D:/College/Yr4Project/Unity/GithubFile/FinalProject/FinalProject/Metroidvania/Library/PackageCache/com.unity.ext.nunit@1.0.6/net35/unity-custom/nunit.framework.dll</HintPath>
+ <HintPath>N:/Final Year Project/FinalProject/Metroidvania/Library/PackageCache/com.unity.ext.nunit@1.0.6/net35/unity-custom/nunit.framework.dll</HintPath>
  </Reference>
  <Reference Include="mscorlib">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.20f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
@@ -667,46 +670,46 @@
  <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.20f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Xml.XPath.XDocument.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.TestRunner">
- <HintPath>D:/College/Yr4Project/Unity/GithubFile/FinalProject/FinalProject/Metroidvania/Library/ScriptAssemblies/UnityEngine.TestRunner.dll</HintPath>
+ <HintPath>N:/Final Year Project/FinalProject/Metroidvania/Library/ScriptAssemblies/UnityEngine.TestRunner.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.TestRunner">
- <HintPath>D:/College/Yr4Project/Unity/GithubFile/FinalProject/FinalProject/Metroidvania/Library/ScriptAssemblies/UnityEditor.TestRunner.dll</HintPath>
+ <HintPath>N:/Final Year Project/FinalProject/Metroidvania/Library/ScriptAssemblies/UnityEditor.TestRunner.dll</HintPath>
  </Reference>
  <Reference Include="Unity.VSCode.Editor">
- <HintPath>D:/College/Yr4Project/Unity/GithubFile/FinalProject/FinalProject/Metroidvania/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+ <HintPath>N:/Final Year Project/FinalProject/Metroidvania/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.2D.Tilemap.Editor">
- <HintPath>D:/College/Yr4Project/Unity/GithubFile/FinalProject/FinalProject/Metroidvania/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
+ <HintPath>N:/Final Year Project/FinalProject/Metroidvania/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro.Editor">
- <HintPath>D:/College/Yr4Project/Unity/GithubFile/FinalProject/FinalProject/Metroidvania/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+ <HintPath>N:/Final Year Project/FinalProject/Metroidvania/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.VisualStudio.Editor">
- <HintPath>D:/College/Yr4Project/Unity/GithubFile/FinalProject/FinalProject/Metroidvania/Library/ScriptAssemblies/Unity.VisualStudio.Editor.dll</HintPath>
+ <HintPath>N:/Final Year Project/FinalProject/Metroidvania/Library/ScriptAssemblies/Unity.VisualStudio.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Timeline.Editor">
- <HintPath>D:/College/Yr4Project/Unity/GithubFile/FinalProject/FinalProject/Metroidvania/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+ <HintPath>N:/Final Year Project/FinalProject/Metroidvania/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Timeline">
- <HintPath>D:/College/Yr4Project/Unity/GithubFile/FinalProject/FinalProject/Metroidvania/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+ <HintPath>N:/Final Year Project/FinalProject/Metroidvania/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro">
- <HintPath>D:/College/Yr4Project/Unity/GithubFile/FinalProject/FinalProject/Metroidvania/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+ <HintPath>N:/Final Year Project/FinalProject/Metroidvania/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
  </Reference>
  <Reference Include="Unity.2D.Sprite.Editor">
- <HintPath>D:/College/Yr4Project/Unity/GithubFile/FinalProject/FinalProject/Metroidvania/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+ <HintPath>N:/Final Year Project/FinalProject/Metroidvania/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.UI">
- <HintPath>D:/College/Yr4Project/Unity/GithubFile/FinalProject/FinalProject/Metroidvania/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+ <HintPath>N:/Final Year Project/FinalProject/Metroidvania/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
  </Reference>
  <Reference Include="Unity.PlasticSCM.Editor">
- <HintPath>D:/College/Yr4Project/Unity/GithubFile/FinalProject/FinalProject/Metroidvania/Library/ScriptAssemblies/Unity.PlasticSCM.Editor.dll</HintPath>
+ <HintPath>N:/Final Year Project/FinalProject/Metroidvania/Library/ScriptAssemblies/Unity.PlasticSCM.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Rider.Editor">
- <HintPath>D:/College/Yr4Project/Unity/GithubFile/FinalProject/FinalProject/Metroidvania/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+ <HintPath>N:/Final Year Project/FinalProject/Metroidvania/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.UI">
- <HintPath>D:/College/Yr4Project/Unity/GithubFile/FinalProject/FinalProject/Metroidvania/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+ <HintPath>N:/Final Year Project/FinalProject/Metroidvania/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>
