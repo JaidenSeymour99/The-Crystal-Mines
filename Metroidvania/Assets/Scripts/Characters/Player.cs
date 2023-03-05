@@ -22,6 +22,7 @@ public class Player : Character
         
     }
 
+    //Overriding the character HandleMovement() to also set the animation and direction of the animations.
     protected override void HandleMovement()
     {
         
@@ -30,6 +31,7 @@ public class Player : Character
         TurnAround(direction);
     }
 
+    //overriding the character HandleJumping() with if statements that lets the player choose when to jump by pressing the Space key. it also handles animations of jumping and falling.
     protected override void HandleJumping()
     {
         //checking if the player is on the ground.
@@ -69,7 +71,5 @@ public class Player : Character
             myAnimator.ResetTrigger("jump");
         }
     }
-
-
 
 }

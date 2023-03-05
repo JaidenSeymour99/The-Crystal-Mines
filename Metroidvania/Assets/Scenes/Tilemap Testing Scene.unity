@@ -6496,8 +6496,6 @@ GameObject:
   - component: {fileID: 1355565777}
   - component: {fileID: 1355565776}
   - component: {fileID: 1355565781}
-  - component: {fileID: 1355565780}
-  - component: {fileID: 1355565775}
   - component: {fileID: 1355565782}
   m_Layer: 0
   m_Name: Player
@@ -6506,26 +6504,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1355565775
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1355565774}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5258c86050d7b294dbd598d384b47bcc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jumpForce: 5
-  jumpTime: 0.3
-  radOfCircle: 0.03
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 64
-  grounded: 0
-  groundCheck: {fileID: 607213920}
 --- !u!70 &1355565776
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -6629,19 +6607,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1355565780
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1355565774}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e299f421dd38854eb19b70aa47643ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 7
 --- !u!95 &1355565781
 Animator:
   serializedVersion: 3
@@ -6674,7 +6639,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
-  jumpForce: 5
+  jumpForce: 6
   jumpTime: 0.3
   radOfCircle: 0.03
   groundMask:
