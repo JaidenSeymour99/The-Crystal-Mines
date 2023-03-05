@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
 
     //variables that control the players movement.
     [SerializeField] private float speed = 2.0f;
-    [SerializeField] private float horizontalMovement;
+    private float direction;
 
     // Start is called before the first frame update
     void Start()
@@ -34,16 +34,16 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         //check direction inputed 
-        horizontalMovement = Input.GetAxis("Horizontal");
+        direction = Input.GetAxis("Horizontal");
     }
 
     //fixed updated used for running the physics
     private void FixedUpdate()
     {
         //move the character.
-        rb2D.velocity = new Vector2(horizontalMovement * speed, rb2D.velocity.y);
-        myAnimator.SetFloat("speed", Mathf.Abs(horizontalMovement));
-        Flip(horizontalMovement);
+        rb2D.velocity = new Vector2(direction * speed, rb2D.velocity.y);
+        myAnimator.SetFloat("speed", Mathf.Abs(direction));
+        Flip(direction);
     }
 
     //function for flipping the player animation
