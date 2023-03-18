@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 //required components. won't run program without them being assigned.
 [RequireComponent(typeof(Rigidbody2D))]
@@ -17,6 +18,9 @@ public abstract class Character : MonoBehaviour
     protected float direction;
     //variable to check which direction the character is in to make animations face the correct direction.
     protected bool facingRight = true;
+
+    
+    
 
     //Jump variables header.
     [Header("Jump variables")]
@@ -58,8 +62,8 @@ public abstract class Character : MonoBehaviour
 
     public virtual void Update()
     {
-        //what it means to be grounded.
-        grounded = Physics2D.OverlapCircle(groundCheck.position, radOfCircle, groundMask);
+        //checking if grounded
+        IsGrounded();
 
         //checking verticle velocity. and if falling play the animation.
         if(rb.velocity.y < 0 )
@@ -71,9 +75,13 @@ public abstract class Character : MonoBehaviour
     public virtual void FixedUpdate()
     {
         //handle physics / mechanics
-        HandleMovement();
+        //Move();
     }
 
+    protected bool IsGrounded()
+    {
+        return grounded = Physics2D.OverlapCircle(groundCheck.position, radOfCircle, groundMask);
+    }
 
     protected void Jump()
     {
@@ -82,18 +90,15 @@ public abstract class Character : MonoBehaviour
     }
 
     //abstract function because jump would be based off of when the character wants to jump. this will mainly be for the player, the enemies will be able to jump but will know when to jump.
-    protected abstract void HandleJumping();
+    // protected abstract void HandleJumping();
 
-    //function for character movement adds a force in a direction to the rigidbody 
-    protected void Move()
-    {
-        rb.velocity = new Vector2(direction * speed, rb.velocity.y);
-    }
 
-    protected virtual void HandleMovement()
-    {
-        Move();
-    }
+    // public void Move(InputAction.CallbackContext context)
+    // {
+        
+    // }
+
+
 
     //function to have the animation flip so that it turns the other direction.
     protected void TurnAround(float horizontal) 

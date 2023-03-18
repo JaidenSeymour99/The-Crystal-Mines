@@ -1,15 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Animator))]
 public class PlayerJump : MonoBehaviour
 {
+    [Header("Movement Details")]
+    [SerializeField] private float speed = 2.0f;
+    private float direction;
+    private bool facingRight = true;
+
     [Header("Jump Details")]
-    [SerializeField]private float jumpForce;
-    [SerializeField]private float jumpTime;
-    private float jumpTimeCounter;
+    [SerializeField]private float jumpForce = 5.0f;
     private bool stoppedJumping;
 
     
@@ -30,55 +34,66 @@ public class PlayerJump : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
-        jumpTimeCounter = jumpTime;
+        
 
     }
 
     // Update is called once per frame
     private void Update()
     {
-        grounded = Physics2D.OverlapCircle(groundCheck.position, radOfCircle, groundMask);
+        rb.velocity = new Vector2(direction * speed, rb.velocity.y);
+
+        if (!facingRight && direction > 0f)
+        {
+            Flip();
+        }
+        else if(facingRight && direction < 0f)
+        {
+            Flip();
+        }
 
 
-        if(grounded)
+    }
+
+    private void FixedUpdate()
+    {
+
+    }
+
+    private void Jump(InputAction.CallbackContext context)
+    {
+        if (context.performed && IsGrounded())
         {
-            jumpTimeCounter = jumpTime;
-            myAnimator.ResetTrigger("jump");
-            myAnimator.SetBool("falling", false);
-        }
-        //press space to jump. if the player is grounded(touching the ground) the player will jump. ( press jump )
-        if(Input.GetButtonDown("Jump") && grounded)
-        {   
-            //applying a force to the player rigidbody.
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-            //sets bool for jumping or grounded
-            stoppedJumping = false;
-            //playing jump anim
-            myAnimator.SetTrigger("jump");
         }
-        //stay jumping while butting is pressed. ( hold jump )
-        if(Input.GetButton("Jump") && !stoppedJumping && (jumpTimeCounter > 0))
+        if (context.canceled && rb.velocity.y > 0f)
         {
-            //applying a force to the player rigidbody.
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-            jumpTimeCounter -= Time.deltaTime;
-            myAnimator.SetTrigger("jump");
-            
-        }
-        if(Input.GetButtonUp("Jump"))
-        {
-            jumpTimeCounter = 0;
-            stoppedJumping = true;
-            //playing falling anim
-            myAnimator.SetBool("falling", true);
-            myAnimator.ResetTrigger("jump");
+            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
         }
         if(rb.velocity.y < 0 )
         {
             myAnimator.SetBool("falling", true);
-
         }
     }
+
+    private void Move(InputAction.CallbackContext context)
+    {
+        direction = context.ReadValue<Vector2>().x;
+        
+    }
+    private bool IsGrounded()
+    {
+        return Physics2D.OverlapCircle(groundCheck.position, radOfCircle, groundMask);
+    }
+    private void Flip()
+    {
+            facingRight = !facingRight;
+            
+            Vector3 theScale = transform.localScale;
+            theScale.x *= -1;
+            transform.localScale = theScale;
+    }
+
     private void OnDrawGizmos()
     {
         Gizmos.DrawSphere(groundCheck.position, radOfCircle);
