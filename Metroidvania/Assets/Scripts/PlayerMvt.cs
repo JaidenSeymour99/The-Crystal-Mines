@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Animator))]
-public class PlayerJump : MonoBehaviour
+public class PlayerMvt : MonoBehaviour
 {
     [Header("Movement Details")]
     [SerializeField] private float speed = 2.0f;
@@ -41,8 +41,11 @@ public class PlayerJump : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        rb.velocity = new Vector2(direction * speed, rb.velocity.y);
-
+        
+        if (IsGrounded())
+        {
+            myAnimator.SetBool("falling", false); 
+        }
         if (!facingRight && direction > 0f)
         {
             Flip();
@@ -52,7 +55,7 @@ public class PlayerJump : MonoBehaviour
             Flip();
         }
 
-
+        rb.velocity = new Vector2(direction * speed, rb.velocity.y);
     }
 
     private void FixedUpdate()
@@ -60,25 +63,33 @@ public class PlayerJump : MonoBehaviour
 
     }
 
-    private void Jump(InputAction.CallbackContext context)
+    public void Jump(InputAction.CallbackContext context)
     {
+
         if (context.performed && IsGrounded())
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-        }
-        if (context.canceled && rb.velocity.y > 0f)
+            myAnimator.SetTrigger("jump");
+            myAnimator.SetBool("falling", false);            
+        } 
+        else if (context.canceled && rb.velocity.y > 0f)
         {
+           
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
+            myAnimator.SetBool("falling", true);
+            myAnimator.ResetTrigger("jump");
         }
-        if(rb.velocity.y < 0 )
+        else if(rb.velocity.y < 0 )
         {
             myAnimator.SetBool("falling", true);
+            myAnimator.ResetTrigger("jump");
         }
     }
 
-    private void Move(InputAction.CallbackContext context)
+    public void Move(InputAction.CallbackContext context)
     {
         direction = context.ReadValue<Vector2>().x;
+        myAnimator.SetFloat("speed", Mathf.Abs(direction));
         
     }
     private bool IsGrounded()
