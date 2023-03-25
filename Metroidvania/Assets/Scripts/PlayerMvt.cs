@@ -44,6 +44,7 @@ public class PlayerMvt : MonoBehaviour
         
         if (IsGrounded())
         {
+            
             myAnimator.SetBool("falling", false); 
         }
         if (!facingRight && direction > 0f)
