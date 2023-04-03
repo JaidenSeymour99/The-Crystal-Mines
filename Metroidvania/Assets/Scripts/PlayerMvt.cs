@@ -9,19 +9,19 @@ using UnityEngine.InputSystem;
 public class PlayerMvt : MonoBehaviour
 {
     [Header("Movement Details")]
-    [SerializeField] private float speed = 2.0f;
+    [SerializeField] private float speed = 8.0f;
     private float direction;
     private bool facingRight = true;
 
     [Header("Jump Details")]
-    [SerializeField]private float jumpForce = 5.0f;
+    [SerializeField]private float jumpForce = 10.0f;
     private bool stoppedJumping;
 
     private float coyoteTime = 0.2f;
     private float coyoteTimeCounter;
 
     [SerializeField]private float jumpsLeft;
-    [SerializeField]private float maxJumps = 1;
+    [SerializeField]private float maxJumps = 2f;
     
     [Header("Ground Details")]
     [SerializeField]private float radOfCircle;
@@ -52,8 +52,7 @@ public class PlayerMvt : MonoBehaviour
         //if the player is on the ground the falling anim will be false. 
         if (IsGrounded())
         {
-            myAnimator.SetBool("falling", false); 
-
+            myAnimator.SetBool("falling", false);
             jumpsLeft = maxJumps;
 
             coyoteTimeCounter = coyoteTime;
@@ -64,11 +63,15 @@ public class PlayerMvt : MonoBehaviour
             coyoteTimeCounter -= Time.deltaTime;
         }
 
-        if(rb.velocity.y < 0 )
+        if(rb.velocity.y < 0f)
         {
             myAnimator.SetBool("falling", true);
             myAnimator.ResetTrigger("jump");
-
+            //this is added to make sure the falling animation isnt stuck if the player holds the button while moving.
+            if(IsGrounded())
+            {
+                myAnimator.SetBool("falling", false);
+            }
         }
         //making sure the player is facing the correct direction.
         if (!facingRight && direction > 0f)
@@ -93,12 +96,12 @@ public class PlayerMvt : MonoBehaviour
     public void Jump(InputAction.CallbackContext context)
     {
         //when jump is pressed and jumps left is more than 0.
-        if (context.performed && jumpsLeft > 0)
+        if (context.performed && jumpsLeft > 0f)
         {
             //adds a veloctiy (jump force) to the y value of the rigid body.
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             myAnimator.SetTrigger("jump");
-            myAnimator.SetBool("falling", false);  
+            myAnimator.SetBool("falling", false);
             
             //the coyote timer makes it so there is some leaniency with jumping if you have just left the ground and the jump button is pressed the player will still jump. 
             //taking away 1 jump from jumps left.   
@@ -113,8 +116,8 @@ public class PlayerMvt : MonoBehaviour
         {
             //allowing the player to jump higher by pressing jump for longer and lower by pressing it for a short time.
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
-            myAnimator.SetBool("falling", true);
             myAnimator.ResetTrigger("jump");
+            myAnimator.SetBool("falling", true);
 
             coyoteTimeCounter = 0f;
         }
