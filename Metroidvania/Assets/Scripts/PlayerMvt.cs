@@ -13,6 +13,9 @@ public class PlayerMvt : MonoBehaviour
     private float direction;
     private bool facingRight = true;
 
+    private bool isWallSliding;
+    private float wallSlidingSpeed = 2f;
+
     [Header("Jump Details")]
     [SerializeField]private float jumpForce = 10.0f;
     private bool stoppedJumping;
@@ -20,6 +23,13 @@ public class PlayerMvt : MonoBehaviour
     private float coyoteTime = 0.2f;
     private float coyoteTimeCounter;
 
+    private bool isWallJumping;
+    private float wallJumpingDirection;
+    private float wallJumpingTime = 0.2f;
+    private float wallJumpingCounter;
+    private float wallJumpingDuration = 0.4f;
+    private Vector2 wallJumpingPower = new Vector2(8f,16f);
+ 
     [SerializeField]private float jumpsLeft;
     [SerializeField]private float maxJumps = 2f;
     
@@ -28,8 +38,12 @@ public class PlayerMvt : MonoBehaviour
     [SerializeField]private LayerMask groundMask;
     [SerializeField]private bool grounded;
     [SerializeField]private Transform groundCheck;
+
+    [Header("Wall Details")]
+    [SerializeField]private Transform wallCheck;
+    [SerializeField]private LayerMask wallLayer;
     
-    [Header("Rigidbody, Animator, CharacterController")]
+    [Header("Rigidbody, Animator")]
     private Rigidbody2D rb; 
     private Animator myAnimator; 
     
@@ -53,24 +67,35 @@ public class PlayerMvt : MonoBehaviour
         if (IsGrounded())
         {
             myAnimator.SetBool("falling", false);
+            myAnimator.SetBool("walled", false);
             jumpsLeft = maxJumps;
 
             coyoteTimeCounter = coyoteTime;
-            
         }
         else 
         {
             coyoteTimeCounter -= Time.deltaTime;
         }
-
+        //when the player is falling play anims
         if(rb.velocity.y < 0f)
         {
-            myAnimator.SetBool("falling", true);
-            myAnimator.ResetTrigger("jump");
+            if(IsWalled())
+            {
+                WallSlide();
+            }
+            else
+            {
+                myAnimator.SetBool("walled", false);
+                myAnimator.SetBool("falling", true);
+            }
+
             //this is added to make sure the falling animation isnt stuck if the player holds the button while moving.
             if(IsGrounded())
             {
                 myAnimator.SetBool("falling", false);
+                myAnimator.SetBool("walled", false);
+                myAnimator.ResetTrigger("jump"); 
+                isWallSliding = false;
             }
         }
         //making sure the player is facing the correct direction.
@@ -85,6 +110,8 @@ public class PlayerMvt : MonoBehaviour
         }
         //controlling the movement of the player.
         rb.velocity = new Vector2(direction * speed, rb.velocity.y);
+
+        
     }
 
     private void FixedUpdate()
@@ -96,21 +123,25 @@ public class PlayerMvt : MonoBehaviour
     public void Jump(InputAction.CallbackContext context)
     {
         //when jump is pressed and jumps left is more than 0.
-        if (context.performed && jumpsLeft > 0f)
+        if (context.performed && jumpsLeft > 0f && !isWallSliding)
         {
-            //adds a veloctiy (jump force) to the y value of the rigid body.
+            //adds a velocity (jump force) to the y value of the rigid body.
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             myAnimator.SetTrigger("jump");
+            myAnimator.SetBool("walled", false);
             myAnimator.SetBool("falling", false);
             
             //the coyote timer makes it so there is some leaniency with jumping if you have just left the ground and the jump button is pressed the player will still jump. 
             //taking away 1 jump from jumps left.   
             if(coyoteTimeCounter <= 0f)
             {
-                jumpsLeft -= 1;
+                jumpsLeft -= 1f;
             }
-
         } 
+        else if (context.performed && isWallSliding)
+        {
+
+        }
         //when jump is canceled.
         else if (context.canceled && rb.velocity.y > 0f)
         {
@@ -130,6 +161,7 @@ public class PlayerMvt : MonoBehaviour
     {
         direction = context.ReadValue<Vector2>().x;
         myAnimator.SetFloat("speed", Mathf.Abs(direction));
+
         
     }
     //bool to check if the player is on the ground. returns true or false.
@@ -137,10 +169,43 @@ public class PlayerMvt : MonoBehaviour
     {
         //drawing a small circle under the rigid body to check if its touching the ground mask. if it is return true. if not return false.
         return Physics2D.OverlapCircle(groundCheck.position, radOfCircle, groundMask);
-        
-        
     }
 
+    private bool IsWalled()
+    {
+        return Physics2D.OverlapCircle(wallCheck.position, radOfCircle, wallLayer);
+    }
+
+    private void WallSlide()
+    {
+        if(IsWalled() && !IsGrounded() && (direction > 0f || direction < 0f)) 
+        {
+            isWallSliding = true;
+            myAnimator.SetBool("walled", true);
+            myAnimator.ResetTrigger("jump"); 
+            rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.y, -wallSlidingSpeed, float.MaxValue));
+        }
+        else
+        {
+            isWallSliding = false;
+            myAnimator.SetBool("walled", false);
+            myAnimator.ResetTrigger("jump"); 
+        }
+    }
+
+    private void WallJump()
+    {
+        if(isWallSliding)
+        {
+            isWallJumping = false;
+            wallJumpingDirection = -transform.localScale.x;
+            wallJumpingCounter = wallJumpingTime;
+        }
+        else
+        {
+            wallJumpingCounter -= Time.deltaTime;
+        }
+    }
     //method used to change the direction a rigid body is facing 
     private void Flip()
     {
@@ -155,6 +220,7 @@ public class PlayerMvt : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.DrawSphere(groundCheck.position, radOfCircle);
+        Gizmos.DrawSphere(wallCheck.position, radOfCircle);
     }
     
 }
