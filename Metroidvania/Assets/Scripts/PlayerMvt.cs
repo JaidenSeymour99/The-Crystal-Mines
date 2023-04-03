@@ -106,8 +106,6 @@ public class PlayerMvt : MonoBehaviour
             {
                 jumpsLeft -= 1;
             }
-            
-            
 
         } 
         //when jump is canceled.
