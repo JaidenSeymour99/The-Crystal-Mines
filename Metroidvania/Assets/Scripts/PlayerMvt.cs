@@ -63,6 +63,13 @@ public class PlayerMvt : MonoBehaviour
         {
             coyoteTimeCounter -= Time.deltaTime;
         }
+
+        if(rb.velocity.y < 0 )
+        {
+            myAnimator.SetBool("falling", true);
+            myAnimator.ResetTrigger("jump");
+
+        }
         //making sure the player is facing the correct direction.
         if (!facingRight && direction > 0f)
         {
@@ -113,11 +120,7 @@ public class PlayerMvt : MonoBehaviour
 
             coyoteTimeCounter = 0f;
         }
-        else if(rb.velocity.y < 0 )
-        {
-            myAnimator.SetBool("falling", true);
-            myAnimator.ResetTrigger("jump");
-        }
+
 
     }
 
