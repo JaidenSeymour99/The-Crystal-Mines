@@ -17,6 +17,9 @@ public class PlayerMvt : MonoBehaviour
     [SerializeField]private float jumpForce = 5.0f;
     private bool stoppedJumping;
 
+    private float coyoteTime = 0.2f;
+    private float coyoteTimeCounter;
+
     [SerializeField]private float jumpsLeft;
     [SerializeField]private float maxJumps = 1;
     
@@ -52,7 +55,13 @@ public class PlayerMvt : MonoBehaviour
             myAnimator.SetBool("falling", false); 
 
             jumpsLeft = maxJumps;
+
+            coyoteTimeCounter = coyoteTime;
             
+        }
+        else 
+        {
+            coyoteTimeCounter -= Time.deltaTime;
         }
         //making sure the player is facing the correct direction.
         if (!facingRight && direction > 0f)
@@ -79,14 +88,19 @@ public class PlayerMvt : MonoBehaviour
         //when jump is pressed and jumps left is more than 0.
         if (context.performed && jumpsLeft > 0)
         {
-            
-            //when the player is grounded and jump is pressed add a virticle velocity to the rigid body (the player).
+            //adds a veloctiy (jump force) to the y value of the rigid body.
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             myAnimator.SetTrigger("jump");
-            myAnimator.SetBool("falling", false);            
-
-            //taking away 1 jump from jumps left.
-            jumpsLeft -= 1;
+            myAnimator.SetBool("falling", false);  
+            
+            //the coyote timer makes it so there is some leaniency with jumping if you have just left the ground and the jump button is pressed the player will still jump. 
+            //taking away 1 jump from jumps left.   
+            if(coyoteTimeCounter <= 0f)
+            {
+                jumpsLeft -= 1;
+            }
+            
+            
 
         } 
         //when jump is canceled.
@@ -96,6 +110,8 @@ public class PlayerMvt : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
             myAnimator.SetBool("falling", true);
             myAnimator.ResetTrigger("jump");
+
+            coyoteTimeCounter = 0f;
         }
         else if(rb.velocity.y < 0 )
         {
