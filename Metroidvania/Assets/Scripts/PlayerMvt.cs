@@ -28,10 +28,11 @@ public class PlayerMvt : MonoBehaviour
     private bool isFalling; 
 
     [SerializeField]private bool isWallJumping;
-    private float wallJumpingDirection;
-    private float wallJumpingTime = 0.1f;
+    [SerializeField]private float wallJumpingDirection;
+    private float wallJumpingTimeMax = 0.2f;
+    [SerializeField]private float wallJumpingTime;
     private float wallJumpingCounter;
-    private float wallJumpingDuration = 0.1f;
+    private float wallJumpingDuration = 1f;
     [SerializeField]private Vector2 wallJumpingPower = new Vector2(3f,7f);
  
     [SerializeField]private float jumpsLeft;
@@ -86,6 +87,8 @@ public class PlayerMvt : MonoBehaviour
         {
             isFalling = false;
         }
+
+
         
         //if the player is on the ground the falling anim will be false. 
         if (IsGrounded())
@@ -101,12 +104,13 @@ public class PlayerMvt : MonoBehaviour
 
         if (IsWalled())
         {
+            wallJumpingTime = wallJumpingTimeMax;
             
-            wallJumpingCounter = wallJumpingDuration;
         }
         else 
-        {
-            wallJumpingCounter -= Time.deltaTime;
+        {   
+            wallJumpingTime -= Time.deltaTime;
+            
         }
         //when the player is falling play anims
         
@@ -120,11 +124,11 @@ public class PlayerMvt : MonoBehaviour
             IsJumping();
             ChangeDirection();
         }
-        else
+        else if (isWallJumping)
         {
-            
+            IsJumping();
             IsMoving();
-            
+            IsFalling();
         }
 
         
@@ -137,26 +141,32 @@ public class PlayerMvt : MonoBehaviour
             //controlling the movement of the player, changing the x velocity.
             rb.velocity = new Vector2(direction * speed, rb.velocity.y);
         }
+        else if (wallJumpingTime <= 0f)
+        {
+            rb.velocity = new Vector2(rb.velocity.x * 0.5f, rb.velocity.y * 0.5f);
+            isWallJumping = false;
+        }
     }
 
     //using the new input system to control the player jump.
     public void Jump(InputAction.CallbackContext context)
     {
-        
-        //Jump from the wall
-        if (context.performed && wallJumpingCounter > 0f)
+        if (wallJumpingTime > 0f)
         {
-            wallJumpingDirection = -transform.localScale.x;
-            rb.velocity = new Vector2(wallJumpingDirection * wallJumpingPower.x, wallJumpingPower.y);
-            isJumping = true;
-            isFalling = false;
-            isWallSliding = false;
-            isWallJumping = true;
+            //Jump from the wall
+            
+            if (context.performed && isWallSliding)
+            {
+                isWallJumping = true;          
+                wallJumpingDirection = -transform.localScale.x;
+                rb.velocity = new Vector2(wallJumpingDirection * wallJumpingPower.x, wallJumpingPower.y);
 
-            wallJumpingCounter = 0;
+                
+
+            }
 
         }
-        //using a jump after the player leaves the wall
+                //using a jump after the player leaves the wall
         else if (context.performed && jumpsLeft > 0f && !isWallSliding)
         {
             isJumping = true;
@@ -171,20 +181,10 @@ public class PlayerMvt : MonoBehaviour
             }
                         
         }
-        else if (context.performed && jumpsLeft > 0f)
-        {
-            
-            isJumping = true;
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-            isWallSliding = false;
-
-            jumpsLeft -= 1f;
-        }
-        
         //when jump is pressed and jumps left is more than 0.
         //Normal jump without wall
         //when jump is canceled.
-        else if (context.canceled && rb.velocity.y > 0f)
+        else if ((context.canceled && rb.velocity.y > 0f) || (wallJumpingTime < 0f))
         {
             isJumping = false;
             isWallJumping = false;
@@ -192,12 +192,14 @@ public class PlayerMvt : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
 
             coyoteTimeCounter = 0f;
+            
         }
         else if (context.canceled) 
         {
             isJumping = false;
             isWallJumping = false;
             coyoteTimeCounter = 0f;
+            wallJumpingTime = 0f;
         }
 
     }
@@ -227,10 +229,9 @@ public class PlayerMvt : MonoBehaviour
             }    
 
         }
-        else
+        else if (context.performed && isWallJumping)
         {
-            direction = context.ReadValue<Vector2>().x; 
-            isWallSliding = false;
+            //direction = context.ReadValue<Vector2>().x;
         }
 
     }
@@ -274,7 +275,7 @@ public class PlayerMvt : MonoBehaviour
     
     private void IsJumping()
     {
-        if (isJumping && (isWallSliding || isWallJumping))
+        if (isJumping || isWallJumping)
         {
             myAnimator.SetTrigger("jump");
             myAnimator.SetBool("walled", false);
