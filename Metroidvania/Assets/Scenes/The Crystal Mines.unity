@@ -15860,9 +15860,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f68833864800cc741931962e42645ad6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 8
+  maxSpeed: 8
   jumpForce: 10
   isWallJumping: 0
+  wallJumpingDirection: 0
+  wallJumpingTime: 0
+  wallJumpingPower: {x: 5, y: 7}
   jumpsLeft: 0
   maxJumps: 1
   radOfCircle: 0.02

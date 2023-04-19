@@ -35,7 +35,7 @@ public class PlayerMvt : MonoBehaviour
     private float wallJumpingDuration = 1f;
     [SerializeField]private Vector2 wallJumpingPower = new Vector2(3f,7f);
  
-    [SerializeField]private float jumpsLeft;
+    [SerializeField]private float jumps;
     [SerializeField]private float maxJumps = 2f;
     
     [Header("Ground Details")]
@@ -61,7 +61,7 @@ public class PlayerMvt : MonoBehaviour
         myAnimator = GetComponent<Animator>();
 
         wallJumpingCounter = wallJumpingDuration;
-        jumpsLeft = maxJumps;  
+        maxJumps = 2f;  
         speed = maxSpeed;
     }
 
@@ -93,9 +93,9 @@ public class PlayerMvt : MonoBehaviour
         //if the player is on the ground the falling anim will be false. 
         if (IsGrounded())
         {
-            jumpsLeft = maxJumps;
-            
+            jumps = 0f;
             coyoteTimeCounter = coyoteTime;
+            wallJumpingDirection = 0f;
         }
         else 
         {
@@ -105,7 +105,7 @@ public class PlayerMvt : MonoBehaviour
         if (IsWalled())
         {
             wallJumpingTime = wallJumpingTimeMax;
-            
+            wallJumpingDirection = -direction;
         }
         else 
         {   
@@ -140,35 +140,32 @@ public class PlayerMvt : MonoBehaviour
         {
             //controlling the movement of the player, changing the x velocity.
             rb.velocity = new Vector2(direction * speed, rb.velocity.y);
+            
         }
         else if (wallJumpingTime <= 0f)
         {
-            rb.velocity = new Vector2(rb.velocity.x * 0.5f, rb.velocity.y * 0.5f);
             isWallJumping = false;
+            rb.velocity = new Vector2(rb.velocity.x * 0.5f, rb.velocity.y * 0.5f);
         }
     }
 
     //using the new input system to control the player jump.
     public void Jump(InputAction.CallbackContext context)
     {
-        if (wallJumpingTime > 0f)
+
+        //Jump from the wall
+        if (context.performed && wallJumpingTime > 0f && isWallSliding)
         {
-            //Jump from the wall
+            isWallJumping = true; 
+            rb.velocity = new Vector2(wallJumpingDirection * wallJumpingPower.x, wallJumpingPower.y);
             
-            if (context.performed && isWallSliding)
-            {
-                isWallJumping = true;          
-                wallJumpingDirection = -transform.localScale.x;
-                rb.velocity = new Vector2(wallJumpingDirection * wallJumpingPower.x, wallJumpingPower.y);
-
-                
-
-            }
-
+            speed = 0f;         
+            wallJumpingTime = 0f;
         }
-                //using a jump after the player leaves the wall
-        else if (context.performed && jumpsLeft > 0f && !isWallSliding)
+        //using a jump after the player leaves the wall
+        else if (context.performed && maxJumps > jumps && !isWallSliding)
         {
+            
             isJumping = true;
             //adds a velocity (jump force) to the y value of the rigid body.
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
@@ -177,25 +174,26 @@ public class PlayerMvt : MonoBehaviour
             //taking away 1 jump from jumps left.   
             if(coyoteTimeCounter <= 0f)
             {
-                jumpsLeft -= 1f;
+                jumps += 1f; 
             }
                         
         }
         //when jump is pressed and jumps left is more than 0.
         //Normal jump without wall
         //when jump is canceled.
-        else if ((context.canceled && rb.velocity.y > 0f) || (wallJumpingTime < 0f))
+        else if ((context.canceled && rb.velocity.y > 0f) && (wallJumpingTime < 0f))
         {
             isJumping = false;
             isWallJumping = false;
             //allowing the player to jump higher by pressing jump for longer and lower by pressing it for a short time.
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
-
             coyoteTimeCounter = 0f;
+
             
         }
         else if (context.canceled) 
         {
+            speed = maxSpeed;
             isJumping = false;
             isWallJumping = false;
             coyoteTimeCounter = 0f;
@@ -254,6 +252,7 @@ public class PlayerMvt : MonoBehaviour
     private void IsMoving()
     {
         myAnimator.SetFloat("speed", Mathf.Abs(direction));
+        
     }
     private void IsWalling()
     {
