@@ -47,9 +47,15 @@ public class PlayerScript : MonoBehaviour
     [SerializeField]private Transform wallCheck;
     [SerializeField]private LayerMask wallLayer;
     
+    [Header("Attack Details")]
+    [SerializeField]private Transform attackPoint;
+    [SerializeField]private float attackRange;
+    [SerializeField]private LayerMask enemyLayers;
+
     [Header("Rigidbody, Animator")]
     private Rigidbody2D rb; 
     private Animator myAnimator; 
+
     
 
 
@@ -235,13 +241,22 @@ public class PlayerScript : MonoBehaviour
     }
     public void Fire(InputAction.CallbackContext context)
     {
-
+        Attack();
     }
 
-    void attack()
+    void Attack()
     {
+        Debug.Log("pressed");
         //play attack anim
+        myAnimator.SetTrigger("attack");
+
         //detect enemies
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
+        
+        foreach(Collider2D enemy in hitEnemies)
+        {
+            Debug.Log("We Hit" + enemy.name);
+        }
         //damage them
     }
 
@@ -366,8 +381,12 @@ public class PlayerScript : MonoBehaviour
     //used to draw a gizmo that is visible to the editor but not in game.
     private void OnDrawGizmos()
     {
+        
         Gizmos.DrawSphere(groundCheck.position, radOfCircle);
         Gizmos.DrawSphere(wallCheck.position, radOfCircle);
+        if(attackPoint == null)
+            return;
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
     
 }
