@@ -51,6 +51,13 @@ public class PlayerScript : MonoBehaviour
     [SerializeField]private Transform attackPoint;
     [SerializeField]private float attackRange;
     [SerializeField]private LayerMask enemyLayers;
+    private float attackDamage = 40f;
+    private bool attacking;
+    private float chainAttackTime = 0.7f;
+
+    private float attackRate = 2f;
+    private float nextAttackTime = 0f;
+
 
     [Header("Rigidbody, Animator")]
     private Rigidbody2D rb; 
@@ -68,6 +75,7 @@ public class PlayerScript : MonoBehaviour
         wallJumpingCounter = wallJumpingDuration;
         maxJumps = 2f;  
         speed = maxSpeed;
+        attacking = false;
     }
 
     //method that repeats every frame used to check if the player is touching the ground and is facing the right direction.
@@ -93,7 +101,6 @@ public class PlayerScript : MonoBehaviour
             isFalling = false;
         }
 
-        
         
         //if the player is on the ground the falling anim will be false. 
         if (IsGrounded())
@@ -218,7 +225,7 @@ public class PlayerScript : MonoBehaviour
             if(context.performed && IsWalled())
             {
                 direction = context.ReadValue<Vector2>().x;     
-                isWallSliding = true;           
+                isWallSliding = true;
             }
             if(context.performed)
             {
@@ -241,23 +248,30 @@ public class PlayerScript : MonoBehaviour
     }
     public void Fire(InputAction.CallbackContext context)
     {
-        Attack();
+        if(Time.time >= nextAttackTime)
+        {
+            Attack();
+            nextAttackTime = Time.time + 1f / attackRate;
+        }
     }
 
-    void Attack()
+    private void Attack()
     {
-        Debug.Log("pressed");
         //play attack anim
-        myAnimator.SetTrigger("attack");
+        myAnimator.SetTrigger("attack1");
+        
 
         //detect enemies
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
         
+
+        //damage them
         foreach(Collider2D enemy in hitEnemies)
         {
-            Debug.Log("We Hit" + enemy.name);
+            enemy.GetComponent<EnemyScript>().TakeDamage(attackDamage);
+            
         }
-        //damage them
+
     }
 
     private void WallSlide()
@@ -291,6 +305,19 @@ public class PlayerScript : MonoBehaviour
         myAnimator.SetFloat("speed", Mathf.Abs(direction));
         
     }
+
+    private void IsAttacking()
+    {
+        if(attacking)
+        {
+            myAnimator.SetTrigger("attack2");
+        }
+        else 
+        {
+            myAnimator.SetTrigger("attack1");
+        }
+    }
+
     private void IsWalling()
     {
         if (isWallSliding && isJumping)
@@ -389,4 +416,6 @@ public class PlayerScript : MonoBehaviour
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
     
+    
+
 }
