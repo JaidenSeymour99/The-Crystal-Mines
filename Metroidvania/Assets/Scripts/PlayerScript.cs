@@ -5,8 +5,7 @@ using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Animator))]
-[RequireComponent(typeof(CharacterController))]
-public class PlayerMvt : MonoBehaviour
+public class PlayerScript : MonoBehaviour
 {
     [Header("Movement Details")]
     [SerializeField] private float maxSpeed = 8.0f;
@@ -234,6 +233,17 @@ public class PlayerMvt : MonoBehaviour
         }
 
     }
+    public void Fire(InputAction.CallbackContext context)
+    {
+
+    }
+
+    void attack()
+    {
+        //play attack anim
+        //detect enemies
+        //damage them
+    }
 
     private void WallSlide()
     {
@@ -249,6 +259,7 @@ public class PlayerMvt : MonoBehaviour
 
         }
     }
+
 
 
     IEnumerator WallBounce()

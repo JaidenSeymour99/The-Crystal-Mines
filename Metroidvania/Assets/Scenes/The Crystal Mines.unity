@@ -15857,18 +15857,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1292477236}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f68833864800cc741931962e42645ad6, type: 3}
+  m_Script: {fileID: 11500000, guid: c8f86ac6ed7daab4aaacc30c310d2dfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 8
+  speed: 0
   jumpForce: 10
   isWallJumping: 0
   wallJumpingDirection: 0
   wallJumpingTime: 0
-  wallJumpingPower: {x: 5, y: 7}
-  jumpsLeft: 0
-  maxJumps: 1
-  radOfCircle: 0.02
+  wallJumpingPower: {x: 3, y: 7}
+  jumps: 0
+  maxJumps: 2
+  radOfCircle: 0
   groundMask:
     serializedVersion: 2
     m_Bits: 64
@@ -16013,7 +16014,7 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1292477238}
-        m_TargetAssemblyTypeName: PlayerMvt, Assembly-CSharp
+        m_TargetAssemblyTypeName: PlayerScript, Assembly-CSharp
         m_MethodName: Move
         m_Mode: 0
         m_Arguments:
@@ -16031,13 +16032,25 @@ MonoBehaviour:
     m_ActionId: 0246fb3f-5a68-44a5-a63d-4f998d132624
     m_ActionName: Player/Look[/Mouse/delta]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1292477238}
+        m_TargetAssemblyTypeName: PlayerScript, Assembly-CSharp
+        m_MethodName: Fire
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: ba7732b6-f071-4929-ab27-69c7f2a80945
     m_ActionName: Player/Fire[/Mouse/leftButton]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1292477238}
-        m_TargetAssemblyTypeName: PlayerMvt, Assembly-CSharp
+        m_TargetAssemblyTypeName: PlayerScript, Assembly-CSharp
         m_MethodName: Jump
         m_Mode: 0
         m_Arguments:
