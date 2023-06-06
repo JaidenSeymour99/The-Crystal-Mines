@@ -39,24 +39,31 @@ public class PlayerScript : MonoBehaviour
     
     [Header("Ground Details")]
     [SerializeField]private float radOfCircle;
-    [SerializeField]private LayerMask groundMask;
     [SerializeField]private bool grounded;
+    [SerializeField]private LayerMask groundMask;
     [SerializeField]private Transform groundCheck;
 
     [Header("Wall Details")]
     [SerializeField]private Transform wallCheck;
     [SerializeField]private LayerMask wallLayer;
+
+    [Header("Dash Details")]
+    private bool canDash = true;
+    private bool isDashing;
+    private float dashingPower = 24f;
+    private float dashingTime = .2f;
+    private float dashingCooldown = 1f;
+    [SerializeField]private TrailRenderer tr;
     
     [Header("Attack Details")]
-    [SerializeField]private Transform attackPoint;
-    [SerializeField]private float attackRange;
-    [SerializeField]private LayerMask enemyLayers;
     private float attackDamage = 40f;
     private bool attacking;
     private float chainAttackTime = 0.7f;
-
     private float attackRate = 2f;
     private float nextAttackTime = 0f;
+    [SerializeField]private float attackRange;
+    [SerializeField]private Transform attackPoint;
+    [SerializeField]private LayerMask enemyLayers;
 
 
     [Header("Rigidbody, Animator")]
@@ -304,6 +311,30 @@ public class PlayerScript : MonoBehaviour
     {
         myAnimator.SetFloat("speed", Mathf.Abs(direction));
         
+    }
+
+    IEnumerator Dash()
+    {
+        //when dash() is run the original gravity of the player is stored, the players gravity is 0 so they are not affected by gravity while they dash
+        //the players velocity is changed (dashing power), and the trail starts emitting
+        canDash = false;
+        isDashing = true;
+        float originalGravity = rb.gravityScale;
+        rb.gravityScale = 0f;
+        rb.velocity = new Vector2(transform.localScale.x * dashingPower, 0f);
+        tr.emitting = true;
+        //waits until the end of the dash.
+        yield return new WaitForSeconds(dashingTime);
+        //turns off the trail, resets the gravity scale.
+        tr.emitting = false;
+        rb.gravityScale = originalGravity;
+        isDashing = false;
+        //wait for the cool down before being able to dash again.
+        yield return new WaitForSeconds(dashingCooldown);
+        
+        canDash = true;
+
+
     }
 
     private void IsAttacking()
