@@ -26,13 +26,6 @@ public class PlayerScript : MonoBehaviour
     private bool isJumping;
     private bool isFalling; 
 
-    [SerializeField]private bool isWallJumping;
-    [SerializeField]private float wallJumpingDirection;
-    private float wallJumpingTimeMax = 0.2f;
-    [SerializeField]private float wallJumpingTime;
-    private float wallJumpingCounter;
-    private float wallJumpingDuration = 1f;
-    [SerializeField]private Vector2 wallJumpingPower = new Vector2(3f,7f);
  
     [SerializeField]private float jumps;
     [SerializeField]private float maxJumps = 2f;
@@ -46,13 +39,20 @@ public class PlayerScript : MonoBehaviour
     [Header("Wall Details")]
     [SerializeField]private Transform wallCheck;
     [SerializeField]private LayerMask wallLayer;
+    [SerializeField]private float wallJumpingDirection;
+    [SerializeField]private float wallJumpingTime;
+    [SerializeField]private Vector2 wallJumpingPower = new Vector2(3f,8f);
+    [SerializeField]private float wallJumpingDuration = .1f;
+    private bool isWallJumping;
+    private float wallJumpingTimeMax = 0.2f;
+    private float wallJumpingCooldown = 1f;
 
     [Header("Dash Details")]
     [SerializeField]private TrailRenderer tr;
+    [SerializeField]private float dashingPower = 8f;
+    [SerializeField]private float dashingTime = .1f;
     private bool canDash = true;
     private bool isDashing;
-    private float dashingPower = 14f;
-    private float dashingTime = .2f;
     private float dashingCooldown = 1f;
     
     [Header("Attack Details")]
@@ -79,7 +79,6 @@ public class PlayerScript : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
 
-        wallJumpingCounter = wallJumpingDuration;
         maxJumps = 2f;  
         speed = maxSpeed;
         attacking = false;
@@ -312,6 +311,12 @@ public class PlayerScript : MonoBehaviour
 
 
 
+    private void IsMoving()
+    {
+        myAnimator.SetFloat("speed", Mathf.Abs(direction));
+        
+    }
+
     IEnumerator WallBounce()
     {
         isWallJumping = true;       
@@ -321,11 +326,9 @@ public class PlayerScript : MonoBehaviour
         yield return null;
         
     }
-    private void IsMoving()
-    {
-        myAnimator.SetFloat("speed", Mathf.Abs(direction));
-        
-    }
+    //CHANGE WALL BOUNCE TO BE LIKE DASH 
+    //HAVE THE NEW VELOCITY IN THE COROUTINE
+    
 
     IEnumerator Dash()
     {
