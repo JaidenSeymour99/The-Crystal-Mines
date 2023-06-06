@@ -48,22 +48,22 @@ public class PlayerScript : MonoBehaviour
     [SerializeField]private LayerMask wallLayer;
 
     [Header("Dash Details")]
+    [SerializeField]private TrailRenderer tr;
     private bool canDash = true;
     private bool isDashing;
-    private float dashingPower = 24f;
+    private float dashingPower = 14f;
     private float dashingTime = .2f;
     private float dashingCooldown = 1f;
-    [SerializeField]private TrailRenderer tr;
     
     [Header("Attack Details")]
+    [SerializeField]private float attackRange;
+    [SerializeField]private Transform attackPoint;
+    [SerializeField]private LayerMask enemyLayers;
     private float attackDamage = 40f;
     private bool attacking;
     private float chainAttackTime = 0.7f;
     private float attackRate = 2f;
     private float nextAttackTime = 0f;
-    [SerializeField]private float attackRange;
-    [SerializeField]private Transform attackPoint;
-    [SerializeField]private LayerMask enemyLayers;
 
 
     [Header("Rigidbody, Animator")]
@@ -89,6 +89,9 @@ public class PlayerScript : MonoBehaviour
     //handles the movement of the player.
     private void Update()
     {
+        if(isDashing)
+            return;
+
         if(rb.velocity.y > 0.1f)
         {
             isJumping = true;
@@ -157,6 +160,9 @@ public class PlayerScript : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if(isDashing)
+            return;
+
         if(!isWallJumping)
         {
             //controlling the movement of the player, changing the x velocity.
@@ -222,6 +228,14 @@ public class PlayerScript : MonoBehaviour
 
     }
 
+    public void Dash(InputAction.CallbackContext context)
+    {
+        if(context.performed && canDash)
+        {
+            StartCoroutine(Dash());
+        }
+    }
+    
     //finding the direction the player is trying to move
     public void Move(InputAction.CallbackContext context)
     {
