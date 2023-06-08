@@ -455,6 +455,7 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -486,9 +487,12 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 1
   platformSettings:
   - serializedVersion: 3
@@ -550,7 +554,7 @@ TextureImporter:
         y: 960
         width: 45
         height: 45
-      alignment: 9
+      alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -1092,7 +1096,7 @@ TextureImporter:
       name: TX Village Props Billboard
       rect:
         serializedVersion: 2
-        x: 189
+        x: 190
         y: 800
         width: 68
         height: 61
@@ -1239,12 +1243,12 @@ TextureImporter:
       name: TX Village Props Well
       rect:
         serializedVersion: 2
-        x: 32
-        y: 768
+        x: 34
+        y: 769
         width: 87
         height: 91
-      alignment: 9
-      pivot: {x: 0.56458426, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1264,8 +1268,8 @@ TextureImporter:
         y: 768
         width: 21
         height: 25
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1345,11 +1349,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 284
-        y: 736
+        y: 737
         width: 41
         height: 29
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1369,8 +1373,8 @@ TextureImporter:
         y: 736
         width: 62
         height: 34
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1411,8 +1415,8 @@ TextureImporter:
         y: 704
         width: 64
         height: 90
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1449,7 +1453,7 @@ TextureImporter:
       name: TX Village Props Gravestone A
       rect:
         serializedVersion: 2
-        x: 447
+        x: 448
         y: 832
         width: 34
         height: 25
@@ -1705,8 +1709,8 @@ TextureImporter:
         y: 416
         width: 57
         height: 28
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1726,8 +1730,8 @@ TextureImporter:
         y: 416
         width: 89
         height: 35
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1747,8 +1751,8 @@ TextureImporter:
         y: 416
         width: 95
         height: 36
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1768,8 +1772,8 @@ TextureImporter:
         y: 676
         width: 96
         height: 40
-      alignment: 9
-      pivot: {x: 0.6772346, y: 0.3914589}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1789,8 +1793,8 @@ TextureImporter:
         y: 704
         width: 32
         height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1810,8 +1814,8 @@ TextureImporter:
         y: 416
         width: 153
         height: 161
-      alignment: 9
-      pivot: {x: 0.52360046, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1890,7 +1894,7 @@ TextureImporter:
       name: TX Village Props Campfire
       rect:
         serializedVersion: 2
-        x: 354
+        x: 355
         y: 736
         width: 61
         height: 23
@@ -2142,8 +2146,8 @@ TextureImporter:
       name: TX Village Props Statue Bouquet
       rect:
         serializedVersion: 2
-        x: 743
-        y: 843
+        x: 744
+        y: 842
         width: 19
         height: 10
       alignment: 7
@@ -2373,12 +2377,12 @@ TextureImporter:
       name: TX Village Props Chair
       rect:
         serializedVersion: 2
-        x: 394
-        y: 800
+        x: 395
+        y: 799
         width: 22
         height: 36
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2524,8 +2528,8 @@ TextureImporter:
         y: 676
         width: 90
         height: 28
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2566,8 +2570,8 @@ TextureImporter:
         y: 665
         width: 10
         height: 39
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2923,8 +2927,8 @@ TextureImporter:
         y: 416
         width: 120
         height: 137
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

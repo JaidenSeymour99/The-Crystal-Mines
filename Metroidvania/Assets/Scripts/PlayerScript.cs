@@ -56,7 +56,7 @@ public class PlayerScript : MonoBehaviour
     private float dashingCooldown = 1f;
     
     [Header("Attack Details")]
-    [SerializeField]private float attackRange;
+    [SerializeField]private float attackRange = .8f;
     [SerializeField]private Transform attackPoint;
     [SerializeField]private LayerMask enemyLayers;
     private float attackDamage = 40f;
@@ -171,7 +171,7 @@ public class PlayerScript : MonoBehaviour
         else if (wallJumpingTime <= 0f)
         {
             isWallJumping = false;
-            //rb.velocity = new Vector2(rb.velocity.x * 0.5f, rb.velocity.y * 0.5f);
+            
         }
     }
 
@@ -328,7 +328,7 @@ public class PlayerScript : MonoBehaviour
     }
     //CHANGE WALL BOUNCE TO BE LIKE DASH 
     //HAVE THE NEW VELOCITY IN THE COROUTINE
-    
+    //myAnimator.SetTrigger("dashing");
 
     IEnumerator Dash()
     {
@@ -336,6 +336,7 @@ public class PlayerScript : MonoBehaviour
         //the players velocity is changed (dashing power), and the trail starts emitting
         canDash = false;
         isDashing = true;
+        myAnimator.SetTrigger("dashing");
         float originalGravity = rb.gravityScale;
         rb.gravityScale = 0f;
         rb.velocity = new Vector2(transform.localScale.x * dashingPower, 0f);
@@ -346,6 +347,7 @@ public class PlayerScript : MonoBehaviour
         tr.emitting = false;
         rb.gravityScale = originalGravity;
         isDashing = false;
+        myAnimator.ResetTrigger("dashing");
         //wait for the cool down before being able to dash again.
         yield return new WaitForSeconds(dashingCooldown);
         
