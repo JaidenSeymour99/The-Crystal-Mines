@@ -29,6 +29,9 @@ public class PlayerScript : MonoBehaviour
  
     [SerializeField]private float jumps;
     [SerializeField]private float maxJumps = 2f;
+
+    private float originalGravity;
+    private float newGravity;
     
     [Header("Ground Details")]
     [SerializeField]private float radOfCircle;
@@ -39,13 +42,15 @@ public class PlayerScript : MonoBehaviour
     [Header("Wall Details")]
     [SerializeField]private Transform wallCheck;
     [SerializeField]private LayerMask wallLayer;
+    
+    [Header("Wall Jump Details")]
     [SerializeField]private float wallJumpingDirection;
+    [SerializeField]private Vector2 wallJumpingPower = new Vector2(9f,9f);
     [SerializeField]private float wallJumpingTime;
-    [SerializeField]private Vector2 wallJumpingPower = new Vector2(3f,8f);
-    [SerializeField]private float wallJumpingDuration = .1f;
-    private bool isWallJumping;
-    private float wallJumpingTimeMax = 0.2f;
-    private float wallJumpingCooldown = 1f;
+    private float maxWallJumpingTime = .1f;
+    [SerializeField]private bool canWallJump = true;
+    [SerializeField]private bool isWallJumping;
+    [SerializeField]private float wallJumpingCooldown = .5f;
 
     [Header("Dash Details")]
     [SerializeField]private TrailRenderer tr;
@@ -61,7 +66,7 @@ public class PlayerScript : MonoBehaviour
     [SerializeField]private LayerMask enemyLayers;
     private float attackDamage = 40f;
     private bool attacking;
-    private float chainAttackTime = 0.7f;
+    //private float chainAttackTime = 0.7f;
     private float attackRate = 2f;
     private float nextAttackTime = 0f;
 
@@ -79,7 +84,11 @@ public class PlayerScript : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
 
-        maxJumps = 2f;  
+
+        originalGravity = rb.gravityScale;
+        
+        wallJumpingTime = maxWallJumpingTime;
+        maxJumps = 2f;
         speed = maxSpeed;
         attacking = false;
     }
@@ -88,7 +97,7 @@ public class PlayerScript : MonoBehaviour
     //handles the movement of the player.
     private void Update()
     {
-        if(isDashing)
+        if(isDashing || isWallJumping)
             return;
 
         if(rb.velocity.y > 0.1f)
@@ -125,14 +134,17 @@ public class PlayerScript : MonoBehaviour
 
         if (IsWalled())
         {
-            wallJumpingTime = wallJumpingTimeMax;
+            
+            StartCoroutine(WallJumpCooldown());
             wallJumpingDirection = -direction;
+            wallJumpingTime = maxWallJumpingTime;
+        
         }
         else 
-        {   
+        {
             wallJumpingTime -= Time.deltaTime;
-            if (wallJumpingTime < 0f) isWallJumping = false;
         }
+
         //when the player is falling play anims
         
         //making sure the player is facing the correct direction.
@@ -159,31 +171,22 @@ public class PlayerScript : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(isDashing)
+        if(isDashing || isWallJumping)
             return;
-
-        if(!isWallJumping)
-        {
-            //controlling the movement of the player, changing the x velocity.
-            rb.velocity = new Vector2(direction * speed, rb.velocity.y);
+        //controlling the movement of the player, changing the x velocity.
+        rb.velocity = new Vector2(direction * speed, rb.velocity.y);
             
-        }
-        else if (wallJumpingTime <= 0f)
-        {
-            isWallJumping = false;
-            
-        }
+        
     }
 
     //using the new input system to control the player jump.
     public void Jump(InputAction.CallbackContext context)
     {
-
+        
         //Jump from the wall
-        if (context.performed && wallJumpingTime > 0f && isWallSliding)
+        if (context.performed && canWallJump)
         {
-            speed = 0f;
-            rb.velocity = new Vector2(wallJumpingDirection * wallJumpingPower.x, wallJumpingPower.y);
+            
             StartCoroutine(WallBounce());
         }
         //when jump is pressed and jumps left is less than max jumps.
@@ -197,16 +200,16 @@ public class PlayerScript : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             
             //the coyote timer makes it so there is some leaniency with jumping if you have just left the ground and the jump button is pressed the player will still jump. 
-            //taking away 1 jump from jumps left.   
             if(coyoteTimeCounter <= 0f)
             {
+            //addingg a jump to the jumps used.   
                 jumps += 1f; 
             }
                         
         }
         
         //when jump is canceled.
-        else if ((context.canceled && rb.velocity.y > 0f) && (wallJumpingTime < 0f))
+        else if ((context.canceled && rb.velocity.y > 0f) && (!canWallJump))
         {
             isJumping = false;
             isWallJumping = false;
@@ -222,7 +225,7 @@ public class PlayerScript : MonoBehaviour
             isJumping = false;
             isWallJumping = false;
             coyoteTimeCounter = 0f;
-            wallJumpingTime = 0f;
+            
         }
 
     }
@@ -239,28 +242,24 @@ public class PlayerScript : MonoBehaviour
     public void Move(InputAction.CallbackContext context)
     {
         
-        if(!isWallJumping)
+        if(IsWalled() && !isWallJumping)
         {
             //when the player moves.
-            if(context.performed && IsWalled())
-            {
-                direction = context.ReadValue<Vector2>().x;     
-                isWallSliding = true;
-            }
             if(context.performed)
             {
-                direction = context.ReadValue<Vector2>().x;
-                
+                direction = context.ReadValue<Vector2>().x;     
             }
-            //when the player cancels their movement.
             else if(context.canceled)
             {
                 direction = context.ReadValue<Vector2>().x;
-                
             }    
 
         }
-        else if (context.performed && isWallJumping)
+        else if (context.performed)
+        {
+            direction = context.ReadValue<Vector2>().x;
+        }
+        else if (context.canceled)
         {
             direction = context.ReadValue<Vector2>().x;
         }
@@ -316,19 +315,38 @@ public class PlayerScript : MonoBehaviour
         myAnimator.SetFloat("speed", Mathf.Abs(direction));
         
     }
+    
+    IEnumerator WallJumpCooldown()
+    {
+        if (!canWallJump)
+        {
+            yield return new WaitForSeconds(wallJumpingCooldown);
+            canWallJump = true;
+        }
+        
+    }
 
     IEnumerator WallBounce()
     {
-        isWallJumping = true;       
-        yield return new WaitForSeconds(.4f);
-        rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y);
-        isWallJumping = false;
-        yield return null;
         
+        canWallJump = false;
+        isWallJumping = true;
+        myAnimator.SetTrigger("jump");
+        myAnimator.SetBool("walled", false);
+        newGravity = rb.gravityScale;
+        rb.gravityScale = 0f;
+        rb.velocity = new Vector2(wallJumpingDirection * wallJumpingPower.x, wallJumpingPower.y);   
+        //tr.emitting = true;
+
+        yield return new WaitForSeconds(wallJumpingTime);
+        
+        //tr.emitting = false;
+        rb.gravityScale = originalGravity;
+        isWallJumping = false;
+        myAnimator.ResetTrigger("jump");
+
+
     }
-    //CHANGE WALL BOUNCE TO BE LIKE DASH 
-    //HAVE THE NEW VELOCITY IN THE COROUTINE
-    //myAnimator.SetTrigger("dashing");
 
     IEnumerator Dash()
     {
@@ -337,17 +355,20 @@ public class PlayerScript : MonoBehaviour
         canDash = false;
         isDashing = true;
         myAnimator.SetTrigger("dashing");
-        float originalGravity = rb.gravityScale;
+        originalGravity = rb.gravityScale;
         rb.gravityScale = 0f;
         rb.velocity = new Vector2(transform.localScale.x * dashingPower, 0f);
         tr.emitting = true;
+
         //waits until the end of the dash.
         yield return new WaitForSeconds(dashingTime);
+
         //turns off the trail, resets the gravity scale.
         tr.emitting = false;
         rb.gravityScale = originalGravity;
         isDashing = false;
         myAnimator.ResetTrigger("dashing");
+
         //wait for the cool down before being able to dash again.
         yield return new WaitForSeconds(dashingCooldown);
         

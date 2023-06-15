@@ -572,21 +572,21 @@ Tilemap:
   - m_RefCount: 0
     m_Data:
       e00: 2.5244127e-29
-      e01: 3.766133e-28
-      e02: 3.765921e-28
-      e03: 3.765921e-28
-      e10: 8.23e-43
-      e11: 2e-43
-      e12: 2e-43
-      e13: 2e-43
-      e20: 1.1667641e-20
-      e21: 1.5916566e+29
-      e22: -8.8534735e-10
-      e23: 1.5916566e+29
-      e30: 4.5905e-41
-      e31: 8.24e-43
-      e32: 8.21e-43
-      e33: 8.24e-43
+      e01: 1.109843e+11
+      e02: 1.1097709e+11
+      e03: 1.1097709e+11
+      e10: 6.71e-43
+      e11: 2.62e-43
+      e12: 2.62e-43
+      e13: 2.62e-43
+      e20: -3.7383808e+34
+      e21: 1.6340385e+29
+      e22: -0.0000000019299353
+      e23: 1.6340385e+29
+      e30: 4.5904e-41
+      e31: 6.73e-43
+      e32: 6.7e-43
+      e33: 6.73e-43
   m_TileColorArray:
   - m_RefCount: 0
     m_Data: {r: 0, g: 0, b: 0, a: 0}
@@ -613,12 +613,12 @@ Tilemap:
   - m_RefCount: 0
     m_Data: {r: 1.5915357e+29, g: 1.5915357e+29, b: 1.5915357e+29, a: 1.5915357e+29}
   - m_RefCount: 0
-    m_Data: {r: 1.5915357e+29, g: 1.5915357e+29, b: 1.5915357e+29, a: 1.5915357e+29}
+    m_Data: {r: 1.6339176e+29, g: 1.6339176e+29, b: 1.6339176e+29, a: 1.6339176e+29}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Origin: {x: -32, y: -23, z: 0}
-  m_Size: {x: 63, y: 31, z: 1}
+  m_Origin: {x: -46, y: -23, z: 0}
+  m_Size: {x: 77, y: 31, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
@@ -15706,6 +15706,7 @@ Transform:
   m_Children:
   - {fileID: 1695270702}
   - {fileID: 550084433}
+  - {fileID: 1565491812}
   - {fileID: 1593739834}
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -15738,9 +15739,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   wallJumpingDirection: 0
+  wallJumpingPower: {x: 9, y: 9}
   wallJumpingTime: 0
-  wallJumpingPower: {x: 3, y: 7}
-  wallJumpingDuration: 1
+  canWallJump: 0
+  isWallJumping: 0
+  wallJumpingCooldown: 1
   tr: {fileID: 1292477245}
   dashingPower: 8
   dashingTime: 0.1
@@ -16358,6 +16361,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1565491811
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1565491812}
+  m_Layer: 7
+  m_Name: Layer Check
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1565491812
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1565491811}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1292477237}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1581304882
 GameObject:
   m_ObjectHideFlags: 0
@@ -16432,7 +16465,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1292477237}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1660333919
 PrefabInstance:
@@ -17649,7 +17682,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1901787627399165972, guid: c487e160c6420994d9204618aee06712, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c487e160c6420994d9204618aee06712, type: 3}
