@@ -50,7 +50,7 @@ public class PlayerScript : MonoBehaviour
     private float maxWallJumpingTime = .1f;
     [SerializeField]private bool canWallJump = true;
     [SerializeField]private bool isWallJumping;
-    [SerializeField]private float wallJumpingCooldown = .5f;
+    [SerializeField]private float wallJumpingCooldown = .2f;
 
     [Header("Dash Details")]
     [SerializeField]private TrailRenderer tr;
@@ -97,6 +97,7 @@ public class PlayerScript : MonoBehaviour
     //handles the movement of the player.
     private void Update()
     {
+        if(PauseScript.isPaused) return;
         if(isDashing || isWallJumping)
             return;
 
@@ -171,6 +172,7 @@ public class PlayerScript : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if(PauseScript.isPaused) return;
         if(isDashing || isWallJumping)
             return;
         //controlling the movement of the player, changing the x velocity.
@@ -182,7 +184,7 @@ public class PlayerScript : MonoBehaviour
     //using the new input system to control the player jump.
     public void Jump(InputAction.CallbackContext context)
     {
-        
+        if(PauseScript.isPaused) return;
         //Jump from the wall
         if (context.performed && canWallJump)
         {
@@ -232,7 +234,8 @@ public class PlayerScript : MonoBehaviour
 
     public void Dash(InputAction.CallbackContext context)
     {
-        if(context.performed && canDash)
+        
+        if(context.performed && canDash && !PauseScript.isPaused)
         {
             StartCoroutine(Dash());
         }
