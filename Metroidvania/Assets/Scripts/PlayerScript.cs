@@ -32,6 +32,9 @@ public class PlayerScript : MonoBehaviour
 
     private float originalGravity;
     private float newGravity;
+
+    [Header("One Way Platform")]
+    public bool fallThrough;
     
     [Header("Ground Details")]
     [SerializeField]private float radOfCircle;
@@ -120,7 +123,18 @@ public class PlayerScript : MonoBehaviour
             isFalling = false;
         }
 
-        
+        //dealing with platforms that you can stand on but also choose to jump down from.
+        //when the down arrow key is pressed the bool fall through is set to true and lets the player fall. 
+        if (Keyboard.current.downArrowKey.isPressed || Keyboard.current.sKey.isPressed)
+        {
+            
+            fallThrough = true;
+        }
+        else
+        {
+            fallThrough = false;
+        }
+
         //if the player is on the ground the falling anim will be false. 
         if (IsGrounded())
         {
@@ -178,7 +192,7 @@ public class PlayerScript : MonoBehaviour
         //controlling the movement of the player, changing the x velocity.
         rb.velocity = new Vector2(direction * speed, rb.velocity.y);
             
-        
+
     }
 
     //using the new input system to control the player jump.
@@ -244,7 +258,7 @@ public class PlayerScript : MonoBehaviour
     //finding the direction the player is trying to move
     public void Move(InputAction.CallbackContext context)
     {
-        
+
         if(IsWalled() && !isWallJumping)
         {
             //when the player moves.
@@ -379,6 +393,7 @@ public class PlayerScript : MonoBehaviour
 
 
     }
+
 
     private void IsAttacking()
     {
