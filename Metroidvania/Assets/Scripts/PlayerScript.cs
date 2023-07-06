@@ -170,7 +170,7 @@ public class PlayerScript : MonoBehaviour
             IsFalling();
             IsWalling();
             IsJumping();
-            ChangeDirection();
+            
             
         }
         else if (isWallJumping)
@@ -187,11 +187,10 @@ public class PlayerScript : MonoBehaviour
     private void FixedUpdate()
     {
         if(PauseScript.isPaused) return;
-        if(isDashing || isWallJumping)
-            return;
+        if(isDashing || isWallJumping) return;
         //controlling the movement of the player, changing the x velocity.
+        ChangeDirection();
         rb.velocity = new Vector2(direction * speed, rb.velocity.y);
-            
 
     }
 
