@@ -315,6 +315,9 @@
  <Reference Include="unityplastic">
  <HintPath>D:/College/Yr4Project/Unity/GithubFile/FinalProject/FinalProject/Metroidvania/Library/PackageCache/com.unity.collab-proxy@1.11.2/Lib/Editor/PlasticSCM/unityplastic.dll</HintPath>
  </Reference>
+ <Reference Include="ICSharpCode.NRefactory">
+ <HintPath>D:/College/Yr4Project/Unity/GithubFile/FinalProject/FinalProject/Metroidvania/Library/PackageCache/com.unity.render-pipelines.core@10.6.0/Editor/ShaderGenerator/ICSharpCode.NRefactory.dll</HintPath>
+ </Reference>
  <Reference Include="nunit.framework">
  <HintPath>D:/College/Yr4Project/Unity/GithubFile/FinalProject/FinalProject/Metroidvania/Library/PackageCache/com.unity.ext.nunit@1.0.6/net35/unity-custom/nunit.framework.dll</HintPath>
  </Reference>
@@ -678,6 +681,12 @@
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/College/Yr4Project/Unity/GithubFile/FinalProject/FinalProject/Metroidvania/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
  </Reference>
+ <Reference Include="Unity.PixelGraphics">
+ <HintPath>D:/College/Yr4Project/Unity/GithubFile/FinalProject/FinalProject/Metroidvania/Library/ScriptAssemblies/Unity.PixelGraphics.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.PixelGraphics.Editor">
+ <HintPath>D:/College/Yr4Project/Unity/GithubFile/FinalProject/FinalProject/Metroidvania/Library/ScriptAssemblies/Unity.PixelGraphics.Editor.dll</HintPath>
+ </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="UnityEngine.TestRunner.csproj">
@@ -753,6 +762,66 @@
     <ProjectReference Include="Unity.PlasticSCM.Editor.csproj">
       <Project>{7EE35BF3-0880-44CD-DB35-E13522655578}</Project>
       <Name>Unity.PlasticSCM.Editor</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="Unity.RenderPipelines.Universal.Shaders.csproj">
+      <Project>{4645FB2C-8E4E-0FDC-9A49-9BEFAC76611C}</Project>
+      <Name>Unity.RenderPipelines.Universal.Shaders</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="Unity.RenderPipelines.Core.Runtime.csproj">
+      <Project>{DEF236F0-19D3-6BFF-C095-7B3B1E96D588}</Project>
+      <Name>Unity.RenderPipelines.Core.Runtime</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Searcher.Editor.csproj">
+      <Project>{34FC7A5F-89C6-622B-3B90-A795D734D17E}</Project>
+      <Name>Unity.Searcher.Editor</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="Unity.RenderPipelines.Universal.Editor.csproj">
+      <Project>{FDBDF51C-2211-1C9E-6339-5072EF2572F1}</Project>
+      <Name>Unity.RenderPipelines.Universal.Editor</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Mathematics.Editor.csproj">
+      <Project>{B46E2D54-D64B-FFE3-A337-B5C29525030F}</Project>
+      <Name>Unity.Mathematics.Editor</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="Unity.RenderPipeline.Universal.ShaderLibrary.csproj">
+      <Project>{49021CDF-039F-59F4-5E34-B1261BC5165D}</Project>
+      <Name>Unity.RenderPipeline.Universal.ShaderLibrary</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="Unity.RenderPipelines.Core.Editor.csproj">
+      <Project>{886DB0FE-0E64-93B1-E4ED-3EA8C877A971}</Project>
+      <Name>Unity.RenderPipelines.Core.Editor</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="Unity.RenderPipelines.Core.ShaderLibrary.csproj">
+      <Project>{51ED7042-5194-9E3A-44AA-97278F9E7063}</Project>
+      <Name>Unity.RenderPipelines.Core.ShaderLibrary</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Mathematics.csproj">
+      <Project>{4D3FD8E9-BE6A-B0CA-0114-F8E44B9C5D6A}</Project>
+      <Name>Unity.Mathematics</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.csproj">
+      <Project>{98AB5762-8E6A-8E57-636E-A4A3826B81AF}</Project>
+      <Name>Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="Unity.ShaderGraph.Editor.csproj">
+      <Project>{D0FB0BA5-388E-CA3E-2C8A-47AD6C92482D}</Project>
+      <Name>Unity.ShaderGraph.Editor</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="Unity.RenderPipelines.Universal.Runtime.csproj">
+      <Project>{90B606D2-8E79-B0C1-D7C5-A5D82C277B06}</Project>
+      <Name>Unity.RenderPipelines.Universal.Runtime</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
   </ItemGroup>
