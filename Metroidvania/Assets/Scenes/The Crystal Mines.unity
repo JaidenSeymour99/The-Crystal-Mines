@@ -647,7 +647,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2f943891a20af34c8c152d90c00509f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseUI: {fileID: 767048695}
+  pauseUI: {fileID: 1568512667}
 --- !u!4 &291456370
 Transform:
   m_ObjectHideFlags: 0
