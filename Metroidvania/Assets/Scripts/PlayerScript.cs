@@ -78,8 +78,10 @@ public class PlayerScript : MonoBehaviour
     private Rigidbody2D rb; 
     private Animator myAnimator; 
 
-    
-
+    [Header("Interactables")]
+    [SerializeField]float interactRange = 3f;
+    [SerializeField] private LayerMask NPCLayers;
+    private NPC NPCdeets;
 
     //getting the rigid body and animator components.
     private void Start()
@@ -87,6 +89,7 @@ public class PlayerScript : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
 
+        NPCdeets = GetComponent<NPC>();
 
         originalGravity = rb.gravityScale;
         
@@ -245,6 +248,17 @@ public class PlayerScript : MonoBehaviour
 
     }
 
+    public void Interact(InputAction.CallbackContext context)
+    {
+        
+        if(context.performed)
+        {
+            CheckInteractions();
+        }
+
+         
+    }
+
     public void Dash(InputAction.CallbackContext context)
     {
         
@@ -309,6 +323,20 @@ public class PlayerScript : MonoBehaviour
 
     }
 
+    private void CheckInteractions()
+    {
+            
+        Collider2D[] colliderArray = Physics2D.OverlapCircleAll(transform.position, interactRange, NPCLayers);
+        foreach (Collider2D collider in colliderArray) 
+        {
+            if(collider.TryGetComponent(out NPCInteractable npcInteractable))
+            {
+                npcInteractable.Interact();
+            }
+
+        }
+    }
+
     private void WallSlide()
     {
         if(IsWalled() && !IsGrounded() && (direction > 0f || direction < 0f)) 
@@ -363,6 +391,7 @@ public class PlayerScript : MonoBehaviour
 
 
     }
+
 
     IEnumerator Dash()
     {
@@ -498,6 +527,7 @@ public class PlayerScript : MonoBehaviour
     {
         
         Gizmos.DrawSphere(groundCheck.position, radOfCircle);
+        Gizmos.DrawWireSphere(transform.position, interactRange);
         Gizmos.DrawSphere(wallCheck.position, radOfCircle);
         if(attackPoint == null)
             return;

@@ -196,7 +196,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 46791655}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -39.13, y: -0.8199997, z: -10}
+  m_LocalPosition: {x: -39.38, y: -0.8199997, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1943295065}
@@ -2842,7 +2842,7 @@ RectTransform:
   m_Children:
   - {fileID: 1192356516}
   - {fileID: 59380533}
-  - {fileID: 1050323117}
+  - {fileID: 1467308728}
   m_Father: {fileID: 767048699}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3155,140 +3155,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1050323116
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1050323117}
-  - component: {fileID: 1050323119}
-  - component: {fileID: 1050323118}
-  m_Layer: 5
-  m_Name: DialogueText
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1050323117
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1050323116}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 934671445}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 78.4209, y: -24.999}
-  m_SizeDelta: {x: 716.8417, y: 175.58}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1050323118
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1050323116}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_text: 
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_fontSharedMaterials: []
-  m_fontMaterial: {fileID: 0}
-  m_fontMaterials: []
-  m_fontColor32:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
-  m_enableVertexGradient: 0
-  m_colorMode: 3
-  m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
-  m_tintAllSprites: 0
-  m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: -1183493901
-  m_overrideHtmlColors: 0
-  m_faceColor:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontSize: 32
-  m_fontSizeBase: 32
-  m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
-  m_fontStyle: 1
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
-  m_textAlignment: 65535
-  m_characterSpacing: 0
-  m_wordSpacing: 0
-  m_lineSpacing: 0
-  m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
-  m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
-  m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
-  m_linkedTextComponent: {fileID: 0}
-  parentLinkedComponent: {fileID: 0}
-  m_enableKerning: 1
-  m_enableExtraPadding: 0
-  checkPaddingRequired: 0
-  m_isRichText: 1
-  m_parseCtrlCharacters: 1
-  m_isOrthographic: 1
-  m_isCullingEnabled: 0
-  m_horizontalMapping: 0
-  m_verticalMapping: 0
-  m_uvLineOffset: 0
-  m_geometrySortingOrder: 0
-  m_IsTextObjectScaleStatic: 0
-  m_VertexBufferAutoSizeReduction: 0
-  m_useMaxVisibleDescender: 1
-  m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
-  m_isUsingLegacyAnimationComponent: 0
-  m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_baseMaterial: {fileID: 0}
-  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!222 &1050323119
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1050323116}
-  m_CullTransparentMesh: 1
 --- !u!1 &1192356515
 GameObject:
   m_ObjectHideFlags: 0
@@ -3476,7 +3342,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1196234964}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -39.13, y: -0.8199997, z: -10}
+  m_LocalPosition: {x: -39.38, y: -0.8199997, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -10670,7 +10536,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1292477236}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -39.13, y: -2.22, z: 0}
+  m_LocalPosition: {x: -39.38, y: -2.22, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children:
   - {fileID: 1695270702}
@@ -10722,6 +10588,10 @@ MonoBehaviour:
   enemyLayers:
     serializedVersion: 2
     m_Bits: 512
+  interactRange: 2
+  NPCLayers:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!95 &1292477239
 Animator:
   serializedVersion: 3
@@ -10950,6 +10820,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 8b4e9d35-b057-49d4-bb90-058f1e9262f8
     m_ActionName: Menu/Navigate[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1292477238}
+        m_TargetAssemblyTypeName: PlayerScript, Assembly-CSharp
+        m_MethodName: Interact
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 1fc89b58-2c8f-4c9e-a489-0955aa968bb7
+    m_ActionName: Player/Interact[/Keyboard/e]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -11368,6 +11254,85 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1386013619}
+  m_CullTransparentMesh: 1
+--- !u!1 &1467308727
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1467308728}
+  - component: {fileID: 1467308730}
+  - component: {fileID: 1467308729}
+  m_Layer: 5
+  m_Name: DialogueText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1467308728
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1467308727}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 934671445}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1467308729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1467308727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: e3265ab4bf004d28a9537516768c1c75, type: 3}
+    m_FontSize: 32
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 3
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: hi
+--- !u!222 &1467308730
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1467308727}
   m_CullTransparentMesh: 1
 --- !u!1 &1492185464
 GameObject:
@@ -13081,7 +13046,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1932930862}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: NPC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13679,7 +13644,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4939614700080009}
   - component: {fileID: 212838714483181137}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cloth R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13696,7 +13661,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4674978560354093}
   - component: {fileID: 212012361210419983}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Foot R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13713,7 +13678,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4048751265828403}
   - component: {fileID: 212348085658331819}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13730,7 +13695,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4254710312475257}
   - component: {fileID: 212077731410446827}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cloth L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13747,7 +13712,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4223897160405117}
   - component: {fileID: 212955577887258521}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13764,7 +13729,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4797043831989519}
   - component: {fileID: 212241984956591637}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Eye R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13781,7 +13746,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4471236921195173}
   - component: {fileID: 212925232590298167}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Hat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13798,7 +13763,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4391520754889825}
   - component: {fileID: 212510109179587969}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Eyebrows R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13816,7 +13781,8 @@ GameObject:
   - component: {fileID: 4000485609543987}
   - component: {fileID: 1382361084786881}
   - component: {fileID: 1382361084786880}
-  m_Layer: 0
+  - component: {fileID: 1382361084786882}
+  m_Layer: 10
   m_Name: Chara_10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13830,11 +13796,19 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1382361084786879}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 691c17af1906d414ea978bb13949131e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boxCol: {fileID: 1382361084786881}
+  dialoguePanel: {fileID: 934671444}
+  dialogueText: {fileID: 1467308729}
+  dialogue:
+  - Hello
+  - TEST :)
+  wordSpeed: 422
+  playerIsClose: 0
 --- !u!61 &1382361084786881
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -13861,6 +13835,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.8174486, y: 2.5833864}
   m_EdgeRadius: 0
+--- !u!114 &1382361084786882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1382361084786879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce262d9008bf3a445a8420134c50fb5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1391138344015485
 GameObject:
   m_ObjectHideFlags: 0
@@ -13871,7 +13857,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4471968090419509}
   - component: {fileID: 212327667772801349}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Eyebrows L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13888,7 +13874,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4609086258604277}
   - component: {fileID: 212617489375116639}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Foot L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13905,7 +13891,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4202107828858929}
   - component: {fileID: 212327008804994873}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13922,7 +13908,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4573399075259323}
   - component: {fileID: 212046467005533829}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Eye L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13939,7 +13925,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4926624137477359}
   - component: {fileID: 212555833169627805}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Eye R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13956,7 +13942,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4087643298893067}
   - component: {fileID: 212872902010718941}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13973,7 +13959,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4934477062879309}
   - component: {fileID: 212436395561654839}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Hat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13990,7 +13976,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4173371788002851}
   - component: {fileID: 212416161902691585}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Eyebrows L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14007,7 +13993,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4329962533346589}
   - component: {fileID: 212514065933167919}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Foot L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14024,7 +14010,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4883140576231135}
   - component: {fileID: 212953657114860029}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Eyebrows R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14040,7 +14026,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4068737808987959}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Chara_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14057,7 +14043,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4472357978795161}
   - component: {fileID: 212516529919680429}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Foot R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14074,7 +14060,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4833633055644029}
   - component: {fileID: 212113053094517803}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14091,7 +14077,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4047978736140299}
   - component: {fileID: 212269468655368773}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Eye L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14108,7 +14094,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4263635843411867}
   - component: {fileID: 212737247676050863}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16488,7 +16474,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4022480785800692088}
   - component: {fileID: 3831497507397052140}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Foot L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16505,7 +16491,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4021026459969521234}
   - component: {fileID: 3832461527844176554}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16522,7 +16508,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4022280454127628486}
   - component: {fileID: 3832357973121375172}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Foot R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16538,7 +16524,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4022283086593278412}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Chara_14
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16555,7 +16541,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4020618972487453544}
   - component: {fileID: 3832013343537117734}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Hand L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16572,7 +16558,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4020653096658135094}
   - component: {fileID: 3832398948100001224}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Eye L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16589,7 +16575,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4021074325096131882}
   - component: {fileID: 3832312852556831028}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16606,7 +16592,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4020741526977255366}
   - component: {fileID: 3832444290880695678}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Hair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16623,7 +16609,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4022699251352280936}
   - component: {fileID: 3830742846008452614}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Hand R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16640,7 +16626,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4021009552657331486}
   - component: {fileID: 3832562132784313760}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Eyebrows L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16657,7 +16643,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4020647413794073378}
   - component: {fileID: 3832395806773790062}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Eyebrows R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16674,7 +16660,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4022542570632461572}
   - component: {fileID: 3830647800060693848}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Mustache
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16691,7 +16677,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4020916787645440432}
   - component: {fileID: 3832351277079487476}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Eye R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
