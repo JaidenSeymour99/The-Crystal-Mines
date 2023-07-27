@@ -2,34 +2,39 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class NPCInteractable : MonoBehaviour
 {
 
     [SerializeField] private GameObject dialoguePanel;
-    [SerializeField] private Text dialogueText;
+    [SerializeField] private TextMeshProUGUI dialogueText;
     [SerializeField] private string[] dialogue;
-    private int index;
+    private int index = 0;
     private bool playerIsClose;
 
+    [SerializeField] private GameObject contButton;
     [SerializeField] private float wordSpeed;
 
-    void Start()
-    {
 
-    }
-
+    //no time to make this not bug out when skipping through the text too fast.
     public void Interact()
     {
-        if (dialoguePanel.activeInHierarchy)
-        {
-            resetText();
-        }
-        else
+        if (!dialoguePanel.activeInHierarchy)
         {
             dialoguePanel.SetActive(true);
             StartCoroutine(Typing());
         }
+        else if (dialogueText.text == dialogue[index])
+        {
+            NextLine();
+        }
+        else 
+        {
+            resetText();
+        }
+
+        contButton.SetActive(true);
     }
 
     public void resetText()
@@ -50,6 +55,8 @@ public class NPCInteractable : MonoBehaviour
 
     public void NextLine()
     {
+        contButton.SetActive(false);
+
         if(index < dialogue.Length -1)
         {
             index++;
@@ -68,6 +75,7 @@ public class NPCInteractable : MonoBehaviour
         if(other.CompareTag("Player"))
         {
             playerIsClose = true;
+            resetText();
         }
     }
 
