@@ -13847,6 +13847,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce262d9008bf3a445a8420134c50fb5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialoguePanel: {fileID: 934671444}
+  dialogueText: {fileID: 1467308729}
+  dialogue:
+  - Hello
+  - HOw are you?
+  wordSpeed: 1000000
 --- !u!1 &1391138344015485
 GameObject:
   m_ObjectHideFlags: 0

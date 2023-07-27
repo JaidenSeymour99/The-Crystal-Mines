@@ -90,20 +90,20 @@ public class NPC : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if(other.CompareTag("Player"))
-        {
-            playerIsClose = true;
-        }
-    }
+    // private void OnTriggerEnter2D(Collider2D other)
+    // {
+    //     if(other.CompareTag("Player"))
+    //     {
+    //         playerIsClose = true;
+    //     }
+    // }
 
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if(other.CompareTag("Player"))
-        {
-            playerIsClose = false;
-            resetText();
-        }
-    }
+    // private void OnTriggerExit2D(Collider2D other)
+    // {
+    //     if(other.CompareTag("Player"))
+    //     {
+    //         playerIsClose = false;
+    //         resetText();
+    //     }
+    // }
 }
