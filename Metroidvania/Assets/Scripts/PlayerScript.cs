@@ -53,13 +53,14 @@ public class PlayerScript : MonoBehaviour
     private float maxWallJumpingTime = .1f;
     [SerializeField]private bool canWallJump = true;
     [SerializeField]private bool isWallJumping;
-    [SerializeField]private float wallJumpingCooldown = .2f;
+    [SerializeField]private float wallJumpingCooldown = .1f;
 
     [Header("Dash Details")]
     [SerializeField]private TrailRenderer tr;
     [SerializeField]private float dashingPower = 8f;
     [SerializeField]private float dashingTime = .1f;
     private bool canDash = true;
+    
     private bool isDashing;
     private float dashingCooldown = 1f;
     
@@ -153,7 +154,7 @@ public class PlayerScript : MonoBehaviour
         if (IsWalled())
         {
             
-            StartCoroutine(WallJumpCooldown());
+            
             wallJumpingDirection = -direction;
             wallJumpingTime = maxWallJumpingTime;
         
@@ -192,6 +193,7 @@ public class PlayerScript : MonoBehaviour
         if(PauseScript.isPaused) return;
         if(isDashing || isWallJumping) return;
         //controlling the movement of the player, changing the x velocity.
+        if(IsWalled()) StartCoroutine(WallJumpCooldown());
         ChangeDirection();
         rb.velocity = new Vector2(direction * speed, rb.velocity.y);
 
