@@ -6,7 +6,7 @@ public class Parallax : MonoBehaviour
 {
 
     public Camera cam;
-    public Transform subject;
+    public Transform subject; // subject is the player in this situation
 
 
     Vector2 startPosition;
