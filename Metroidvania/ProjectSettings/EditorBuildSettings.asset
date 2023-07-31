@@ -5,8 +5,14 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/Menu.unity
+    guid: 1a03f3db607872549a379baebab5d62f
+  - enabled: 1
+    path: Assets/Scenes/The Crystal Mines1.unity
+    guid: ad710619a7901d54e96fd2ce3de7e642
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: a2d6d4b90dc3d0c4c8d449deea0619d3, type: 2}

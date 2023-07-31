@@ -11,6 +11,7 @@ public class Parallax : MonoBehaviour
 
     Vector2 startPosition;
     float startZ;
+    
 
     //property
     //distance camera has moved from original position.
@@ -31,7 +32,7 @@ public class Parallax : MonoBehaviour
     {
         startPosition = transform.position;
         startZ = transform.position.z;
-
+        
     }
 
     // needs to be fixed update to not have the background stutter.

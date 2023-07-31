@@ -11,7 +11,7 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private float maxSpeed = 8.0f;
     [SerializeField]private float speed;
     private float direction;
-    private bool facingRight = true;
+    public bool facingRight = true;
 
     private bool isWallSliding;
     private float wallSlidingSpeed = 2f;
@@ -57,7 +57,7 @@ public class PlayerScript : MonoBehaviour
 
     [Header("Dash Details")]
     [SerializeField]private TrailRenderer tr;
-    [SerializeField]private float dashingPower = 8f;
+    [SerializeField]private float dashingPower = 40f;
     [SerializeField]private float dashingTime = .1f;
     private bool canDash = true;
     
@@ -84,6 +84,10 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private LayerMask NPCLayers;
     private NPC NPCdeets;
 
+    [Header("Camera")]
+    [SerializeField] private GameObject cameraFollow;
+    private CameraFollowObject cameraFollowObject;
+
     //getting the rigid body and animator components.
     private void Start()
     {
@@ -98,6 +102,8 @@ public class PlayerScript : MonoBehaviour
         maxJumps = 2f;
         speed = maxSpeed;
         attacking = false;
+
+        cameraFollowObject = cameraFollow.GetComponent<CameraFollowObject>();
     }
 
     //method that repeats every frame used to check if the player is touching the ground and is facing the right direction.
@@ -404,7 +410,7 @@ public class PlayerScript : MonoBehaviour
         myAnimator.SetTrigger("dashing");
         originalGravity = rb.gravityScale;
         rb.gravityScale = 0f;
-        rb.velocity = new Vector2(transform.localScale.x * dashingPower, 0f);
+        rb.velocity = new Vector2(dashingPower, 0f);
         tr.emitting = true;
 
         //waits until the end of the dash.
@@ -491,42 +497,42 @@ public class PlayerScript : MonoBehaviour
     }
 
     private void ChangeDirection()
-    {
-        
-        if (!facingRight && direction > 0f)
+    {  
+        if(!facingRight && direction > 0)
         {
             Flip();
         }
-        //making sure the player is facing the correct direction.
-        else if(facingRight && direction < 0f)
+        else if (facingRight && direction < 0)
         {
             Flip();
         }
-
-
     }
     //method used to change the direction a rigid body is facing 
     private void Flip()
     {
             //OLD VERSION OF CHANGING DIRECTION
+            //this made the camera not work correctly.
 
             // facingRight = !facingRight;
             
             // Vector3 theScale = transform.localScale;
             // theScale.x *= -1;
             // transform.localScale = theScale;
+            // cameraFollowObject.Turn();
 
             if(facingRight)
             {
                 Vector2 rotator = new Vector2(transform.rotation.x, 180f);
                 transform.rotation = Quaternion.Euler(rotator);
                 facingRight = !facingRight;
+                dashingPower *= -1f;
             }
             else
             {
                 Vector2 rotator = new Vector2(transform.rotation.x, 0f);
-                transform.rotation = Quaternion.Euler(rotator );
+                transform.rotation = Quaternion.Euler(rotator);
                 facingRight = !facingRight;
+                dashingPower *= -1f;
             }
 
     }

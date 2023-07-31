@@ -63,6 +63,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.ShaderGraph.Utilities
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-Editor-firstpass", "Assembly-CSharp-Editor-firstpass.csproj", "{fc00f57e-fbf6-5397-0398-4bb9d66b35c5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-Editor", "Assembly-CSharp-Editor.csproj", "{95546d42-5025-32ce-3536-ec2f42315082}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -130,6 +132,8 @@ Global
 		{0575510d-94d4-61dd-19f5-e6ae6692c882}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{fc00f57e-fbf6-5397-0398-4bb9d66b35c5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{fc00f57e-fbf6-5397-0398-4bb9d66b35c5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95546d42-5025-32ce-3536-ec2f42315082}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95546d42-5025-32ce-3536-ec2f42315082}.Debug|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
