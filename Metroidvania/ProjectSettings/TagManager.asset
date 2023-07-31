@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - OneWayPlatform
+  - Checkpoint
   layers:
   - Default
   - TransparentFX
