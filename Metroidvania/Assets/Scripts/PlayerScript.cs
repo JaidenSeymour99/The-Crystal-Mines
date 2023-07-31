@@ -194,7 +194,7 @@ public class PlayerScript : MonoBehaviour
         if(isDashing || isWallJumping) return;
         //controlling the movement of the player, changing the x velocity.
         if(IsWalled()) StartCoroutine(WallJumpCooldown());
-        ChangeDirection();
+        if(direction > 0 || direction < 0) ChangeDirection();
         rb.velocity = new Vector2(direction * speed, rb.velocity.y);
 
     }
@@ -492,6 +492,7 @@ public class PlayerScript : MonoBehaviour
 
     private void ChangeDirection()
     {
+        
         if (!facingRight && direction > 0f)
         {
             Flip();
@@ -501,15 +502,33 @@ public class PlayerScript : MonoBehaviour
         {
             Flip();
         }
+
+
     }
     //method used to change the direction a rigid body is facing 
     private void Flip()
     {
-            facingRight = !facingRight;
+            //OLD VERSION OF CHANGING DIRECTION
+
+            // facingRight = !facingRight;
             
-            Vector3 theScale = transform.localScale;
-            theScale.x *= -1;
-            transform.localScale = theScale;
+            // Vector3 theScale = transform.localScale;
+            // theScale.x *= -1;
+            // transform.localScale = theScale;
+
+            if(facingRight)
+            {
+                Vector2 rotator = new Vector2(transform.rotation.x, 180f);
+                transform.rotation = Quaternion.Euler(rotator);
+                facingRight = !facingRight;
+            }
+            else
+            {
+                Vector2 rotator = new Vector2(transform.rotation.x, 0f);
+                transform.rotation = Quaternion.Euler(rotator );
+                facingRight = !facingRight;
+            }
+
     }
     //bool to check if the player is on the ground. returns true or false.
     private bool IsGrounded()
