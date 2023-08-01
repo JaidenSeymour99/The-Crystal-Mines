@@ -46,7 +46,7 @@ public class PauseScript : MonoBehaviour
     void PauseGame()
     {
         Time.timeScale = 0;
-        AudioListener.pause = true;
+        
         isPaused = true;
         pauseUI.SetActive(true);
     }
@@ -54,7 +54,7 @@ public class PauseScript : MonoBehaviour
     public void ResumeGame()
     {
         Time.timeScale = 1;
-        AudioListener.pause = false;
+        
         isPaused = false;
         pauseUI.SetActive(false);
     }

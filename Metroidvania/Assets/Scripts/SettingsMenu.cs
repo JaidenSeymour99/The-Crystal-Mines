@@ -16,17 +16,33 @@ public class SettingsMenu : MonoBehaviour
     public Slider musicSlider;
     public Slider sfxSlider;
 
-    
+
+    public const string MASTER_MIXER = "mastervolume";
+    public const string MUSIC_MIXER = "musicvolume";
+    public const string SFX_MIXER = "sfxvolume";
 
     void Awake()
     {
-        LoadSound();
+
+        masterSlider.onValueChanged.AddListener(SetMasterVolume);
+        musicSlider.onValueChanged.AddListener(SetMusicVolume);
+        sfxSlider.onValueChanged.AddListener(SetSFXVolume);
+
+
+    }
+
+    void OnDisable()
+    {
+        PlayerPrefs.SetFloat(AudioManager.MASTER_KEY, masterSlider.value);
+        PlayerPrefs.SetFloat(AudioManager.MUSIC_KEY, musicSlider.value);
+        PlayerPrefs.SetFloat(AudioManager.SFX_KEY, sfxSlider.value);
     }
     
     void Start()
     {
-
-        
+        masterSlider.value = PlayerPrefs.GetFloat(AudioManager.MASTER_KEY, 1f);
+        musicSlider.value = PlayerPrefs.GetFloat(AudioManager.MUSIC_KEY, 1f);
+        sfxSlider.value = PlayerPrefs.GetFloat(AudioManager.SFX_KEY, 1f);
 
         resolutions = Screen.resolutions;
 
@@ -59,28 +75,18 @@ public class SettingsMenu : MonoBehaviour
 
     public void SetMasterVolume(float volume)
     {
-        audioMixer.SetFloat("mastervolume", volume);
-        PlayerPrefs.SetFloat("mastervolume", volume);
+
+        audioMixer.SetFloat(MASTER_MIXER, Mathf.Log10(volume) * 20);
     }
 
     public void SetMusicVolume(float volume)
-    {
-        audioMixer.SetFloat("musicvolume", volume);
-        PlayerPrefs.SetFloat("musicvolume", volume);
+    {   
+        audioMixer.SetFloat(MUSIC_MIXER, Mathf.Log10(volume) * 20);
     }
     
     public void SetSFXVolume(float volume)
     {
-        audioMixer.SetFloat("sfxvolume", volume);
-        PlayerPrefs.SetFloat("sfxvolume", volume);
-    }
-
-    private void LoadSound()
-    {
-
-        masterSlider.value = PlayerPrefs.GetFloat("mastervolume");
-        musicSlider.value = PlayerPrefs.GetFloat("musicvolume");
-        sfxSlider.value = PlayerPrefs.GetFloat("sfxvolume");
+        audioMixer.SetFloat(SFX_MIXER, Mathf.Log10(volume) * 20);
     }
 
 
