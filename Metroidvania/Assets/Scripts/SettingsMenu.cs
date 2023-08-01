@@ -11,10 +11,23 @@ public class SettingsMenu : MonoBehaviour
     Resolution[] resolutions;
     public TMP_Dropdown resolutionDropdown;
     public AudioMixer audioMixer;
+    
+    public Slider masterSlider;
+    public Slider musicSlider;
+    public Slider sfxSlider;
 
-    void Start()
+    
 
+    void Awake()
     {
+        LoadSound();
+    }
+    
+    void Start()
+    {
+
+        
+
         resolutions = Screen.resolutions;
 
         resolutionDropdown.ClearOptions();
@@ -35,6 +48,8 @@ public class SettingsMenu : MonoBehaviour
         resolutionDropdown.AddOptions(options);
         resolutionDropdown.value = currentResolutionIndex;
         resolutionDropdown.RefreshShownValue();
+
+
     }
     public void SetResolution(int resolutionIndex)
     {
@@ -42,14 +57,37 @@ public class SettingsMenu : MonoBehaviour
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
     }
 
-    public void SetVolume(float volume)
+    public void SetMasterVolume(float volume)
     {
         audioMixer.SetFloat("mastervolume", volume);
+        PlayerPrefs.SetFloat("mastervolume", volume);
     }
+
+    public void SetMusicVolume(float volume)
+    {
+        audioMixer.SetFloat("musicvolume", volume);
+        PlayerPrefs.SetFloat("musicvolume", volume);
+    }
+    
+    public void SetSFXVolume(float volume)
+    {
+        audioMixer.SetFloat("sfxvolume", volume);
+        PlayerPrefs.SetFloat("sfxvolume", volume);
+    }
+
+    private void LoadSound()
+    {
+
+        masterSlider.value = PlayerPrefs.GetFloat("mastervolume");
+        musicSlider.value = PlayerPrefs.GetFloat("musicvolume");
+        sfxSlider.value = PlayerPrefs.GetFloat("sfxvolume");
+    }
+
 
     public void SetQuality (int qualityIndex)
     {
         QualitySettings.SetQualityLevel(qualityIndex);
     }
+
 
 }
