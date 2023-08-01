@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Animator))]
 public class PlayerScript : MonoBehaviour
@@ -220,7 +221,7 @@ public class PlayerScript : MonoBehaviour
         //using a jump after the player leaves the wall
         else if (context.performed && maxJumps > jumps && !isWallSliding)
         {
-            
+            AudioManager.instance.JumpSFX();
             isJumping = true;
             //adds a velocity (jump force) to the y value of the rigid body.
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
@@ -305,9 +306,10 @@ public class PlayerScript : MonoBehaviour
     }
     public void Fire(InputAction.CallbackContext context)
     {
-        if(Time.time >= nextAttackTime)
+        if(Time.time >= nextAttackTime && context.performed)
         {
             Attack();
+            AudioManager.instance.AttackSFX();
             nextAttackTime = Time.time + 1f / attackRate;
         }
     }

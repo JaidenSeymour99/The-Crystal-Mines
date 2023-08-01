@@ -7,16 +7,20 @@ using UnityEngine.Audio;
 
 public class SettingsMenu : MonoBehaviour
 {
-
+    //Array of resoulutions.
     Resolution[] resolutions;
+    //Dropdown reference
     public TMP_Dropdown resolutionDropdown;
+    //Audio mixer reference
     public AudioMixer audioMixer;
     
+    //Slider references
     public Slider masterSlider;
     public Slider musicSlider;
     public Slider sfxSlider;
 
 
+    //The name of the variables that controls the parts of the mixer
     public const string MASTER_MIXER = "mastervolume";
     public const string MUSIC_MIXER = "musicvolume";
     public const string SFX_MIXER = "sfxvolume";
@@ -31,6 +35,7 @@ public class SettingsMenu : MonoBehaviour
 
     }
 
+    //when exiting the values for the master, music and sfx slider will be stored in player preferences.
     void OnDisable()
     {
         PlayerPrefs.SetFloat(AudioManager.MASTER_KEY, masterSlider.value);

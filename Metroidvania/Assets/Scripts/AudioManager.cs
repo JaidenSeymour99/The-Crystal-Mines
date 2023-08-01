@@ -8,6 +8,8 @@ public class AudioManager : MonoBehaviour
 
     public static AudioManager instance;
 
+
+    [SerializeField] AudioSource MusicSource;
     [SerializeField] AudioSource SFXSource;
     [SerializeField] List<AudioClip> clips = new List<AudioClip>();
     [SerializeField] AudioMixer mixer;
@@ -32,6 +34,17 @@ public class AudioManager : MonoBehaviour
         LoadSound();
     }
 
+    public void AttackSFX()
+    {
+        AudioClip clip = clips[1];
+        SFXSource.PlayOneShot(clip);
+    }
+
+    public void JumpSFX()
+    {
+        AudioClip clip = clips[0];
+        SFXSource.PlayOneShot(clip);
+    }
 
     public void SFX()
     {
