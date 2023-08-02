@@ -8,13 +8,13 @@ public class CameraFollowObject : MonoBehaviour
     [SerializeField] private Transform playerTransform;
 
 
-    private PlayerScript player;
+    private Player player;
 
     private bool facingRight;
 
     private void Awake()
     {
-        player = playerTransform.gameObject.GetComponent<PlayerScript>();
+        player = playerTransform.gameObject.GetComponent<Player>();
 
         facingRight = player.facingRight;
     }

@@ -3,119 +3,150 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-//required components. won't run program without them being assigned.
-[RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent(typeof(Animator))]
 
 //dont want to implement a base character so abstract class, want other things to be able to use this freely.
-public abstract class Character : MonoBehaviour
+public class Character : MonoBehaviour
 {
-    //movement variables header
-    [Header ("Mvt variables")]
-    //variable for speed of a rigidbody
-    [SerializeField] protected float speed = 1.0f;
-    //variable for direction of a rigidbody
-    protected float direction;
-    //variable to check which direction the character is in to make animations face the correct direction.
-    protected bool facingRight = true;
 
-    
-    
+    [Header("Character Health")]
+    [SerializeField] public float maxHealth;
+    protected private float currentHealth; 
 
-    //Jump variables header.
-    [Header("Jump variables")]
+    [Header("Movement Details")]
+    [SerializeField] protected private float maxSpeed = 8.0f;
+    [SerializeField] protected private float speed;
+    protected private float direction;
+    public bool facingRight = true;
 
-    //variable for the power of a jump
-    [SerializeField]protected float jumpForce;
-    //variable to set how long a character can jump for.
-    [SerializeField]protected float jumpTime;
-    //variable used when drawing a gizmo to check if the character is on the ground.
-    [SerializeField]protected float radOfCircle;
-    //layer mask that will cover the ground, can check if a character touches the mask 
-    [SerializeField]protected LayerMask groundMask;
-    //variable to check if a character is on the ground.
-    [SerializeField]protected bool grounded;
-    //transform used to check if a character is touching the ground mask.
-    [SerializeField]protected Transform groundCheck;
+    [Header("Jump Details")]
+    [SerializeField] protected private float jumpForce = 10.0f;
+    protected private float jumps;
+    [SerializeField] protected private float maxJumps = 2f;
 
-    protected float jumpTimeCounter;
-    //used to let a character decide how high they can jump
-    protected bool stoppedJumping;
+    [Header("Attack Details")]
+    [SerializeField] protected private float attackDamage = 40f;
+    [SerializeField] protected private float attackRate = 2f;
+    [SerializeField] protected private float attackRange = .8f;
+    [SerializeField] protected private Transform attackPoint;
+    [SerializeField] protected private LayerMask enemyLayers;
+    protected private float nextAttackTime = 0f;
+    protected private bool attacking;
 
-    // [Header("Attack variables")]
-    // [Header("Character stats")]
+    [Header("Ground Details")]
+    [SerializeField] protected private float radOfCircle = 0.03f;
+    [SerializeField] protected private bool grounded;
+    [SerializeField] protected private LayerMask groundMask;
+    [SerializeField] protected private Transform groundCheck;
 
-    //rigidbody
-    protected Rigidbody2D rb;
-    //animator
-    protected Animator myAnimator;
+    [Header("Wall Details")]
+    [SerializeField] protected private Transform wallCheck;
+    [SerializeField] protected private LayerMask wallLayer;
 
-    //getting the rigidbody and animator on the character, 
+
+
+    protected Collider2D[] hitEnemies;
+
     public virtual void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        myAnimator = GetComponent<Animator>();
-
-        //setting player jump time, how long the player can jump for.
-        jumpTimeCounter = jumpTime;
+        speed = maxSpeed;
+        attacking = false;
+        currentHealth = maxHealth;
     }
+
 
     public virtual void Update()
     {
-        //checking if grounded
-        IsGrounded();
+        if(PauseScript.isPaused) return;
 
-        //checking verticle velocity. and if falling play the animation.
-        if(rb.velocity.y < 0 )
-        {
-            myAnimator.SetBool("falling", true);
-        }
+
     }
 
     public virtual void FixedUpdate()
     {
-        //handle physics / mechanics
-        //Move();
-    }
-
-    protected bool IsGrounded()
-    {
-        return grounded = Physics2D.OverlapCircle(groundCheck.position, radOfCircle, groundMask);
-    }
-
-    protected void Jump()
-    {
-        //applying jump force to the rigidbody.
-        rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-    }
-
-    //abstract function because jump would be based off of when the character wants to jump. this will mainly be for the player, the enemies will be able to jump but will know when to jump.
-    // protected abstract void HandleJumping();
-
-
-    // public void Move(InputAction.CallbackContext context)
-    // {
+        if(PauseScript.isPaused) return;
         
-    // }
+    }
 
-
-
-    //function to have the animation flip so that it turns the other direction.
-    protected void TurnAround(float horizontal) 
+    protected virtual void Attack()
     {
-        if (horizontal < 0 && facingRight || horizontal > 0 && !facingRight)
+        
+    }
+
+    public virtual void TakeDamage(float damage)
+    {
+        currentHealth -= damage;
+
+        if(currentHealth <= 0)
         {
-            //
-            facingRight = !facingRight;
-            
-            Vector3 theScale = transform.localScale;
-            theScale.x *= -1;
-            transform.localScale = theScale;
+            Die();
         }
     }
-    //drawing a circle to be used to check for overlap between the ground and a character. 
-    private void OnDrawGizmos()
+
+    protected virtual void Die()
     {
-        Gizmos.DrawSphere(groundCheck.position, radOfCircle);
+        
+        //disable enemy
+        StartCoroutine(DisableOnDeath());
+    }
+
+    public virtual IEnumerator DisableOnDeath()
+    {
+        yield return new WaitForSeconds(.8f);
+        GetComponent<Collider2D>().enabled = false;
+        GetComponent<SpriteRenderer>().enabled = false;
+        this.enabled = false;
+        yield return null;
+    }
+
+
+    protected private void ChangeDirection()
+    {  
+        if(!facingRight && direction > 0)
+        {
+            Flip();
+        }
+        else if (facingRight && direction < 0)
+        {
+            Flip();
+        }
+    }
+    //method used to change the direction a rigid body is facing 
+    protected virtual void Flip()
+    {
+        //OLD VERSION OF CHANGING DIRECTION
+        //this made the camera not work correctly.
+
+        // facingRight = !facingRight;
+        
+        // Vector3 theScale = transform.localScale;
+        // theScale.x *= -1;
+        // transform.localScale = theScale;
+        // cameraFollowObject.Turn();
+
+        if(facingRight)
+        {
+            Vector2 rotator = new Vector2(transform.rotation.x, 180f);
+            transform.rotation = Quaternion.Euler(rotator);
+            facingRight = !facingRight;
+        }
+        else
+        {
+            Vector2 rotator = new Vector2(transform.rotation.x, 0f);
+            transform.rotation = Quaternion.Euler(rotator);
+            facingRight = !facingRight;
+        }
+
+    }
+    //bool to check if the player is on the ground. returns true or false.
+    protected private bool IsGrounded()
+    {
+        //drawing a small circle under the rigid body to check if its touching the ground mask. if it is return true. if not return false.
+        return Physics2D.OverlapCircle(groundCheck.position, radOfCircle, groundMask);
+    }
+
+    //bool. checking for player / wall overlap. returns true or false.
+    protected private bool IsWalled()
+    {
+        return Physics2D.OverlapCircle(wallCheck.position, radOfCircle, wallLayer);
     }
 }

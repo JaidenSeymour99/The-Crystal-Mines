@@ -70,7 +70,7 @@ public class PlayerScript : MonoBehaviour
     [SerializeField]private Transform attackPoint;
     [SerializeField]private LayerMask enemyLayers;
     private float attackDamage = 40f;
-    private bool attacking;
+    private bool attacking = false;
     //private float chainAttackTime = 0.7f;
     private float attackRate = 2f;
     private float nextAttackTime = 0f;
@@ -81,9 +81,9 @@ public class PlayerScript : MonoBehaviour
     private Animator myAnimator; 
 
     [Header("Interactables")]
-    [SerializeField]float interactRange = 3f;
+    [SerializeField] public float interactRange = 3f;
     [SerializeField] private LayerMask NPCLayers;
-    private NPC NPCdeets;
+    
 
     [Header("Camera")]
     [SerializeField] private GameObject cameraFollow;
@@ -95,7 +95,7 @@ public class PlayerScript : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
 
-        NPCdeets = GetComponent<NPC>();
+        
 
         originalGravity = rb.gravityScale;
         
@@ -171,9 +171,8 @@ public class PlayerScript : MonoBehaviour
             wallJumpingTime -= Time.deltaTime;
         }
 
-        //when the player is falling play anims
         
-        //making sure the player is facing the correct direction.
+        //making sure the player is using the correct animation.
         if(!isWallJumping)
         {
             IsMoving();
@@ -306,7 +305,7 @@ public class PlayerScript : MonoBehaviour
     }
     public void Fire(InputAction.CallbackContext context)
     {
-        if(Time.time >= nextAttackTime && context.performed)
+        if(Time.time >= nextAttackTime && !isDashing && context.performed)
         {
             Attack();
             AudioManager.instance.AttackSFX();
@@ -364,11 +363,7 @@ public class PlayerScript : MonoBehaviour
 
 
 
-    private void IsMoving()
-    {
-        myAnimator.SetFloat("speed", Mathf.Abs(direction));
-        
-    }
+
     
     IEnumerator WallJumpCooldown()
     {
@@ -431,15 +426,24 @@ public class PlayerScript : MonoBehaviour
 
 
     }
+    // private void PlayerAnimations()
+    // {
+    //     if(!isWallJumping)
+    //     {
+    //         IsMoving();
 
+    //     }
 
+    // }
+
+    private void IsMoving()
+    {
+        myAnimator.SetFloat("speed", Mathf.Abs(direction));
+        
+    }
     private void IsAttacking()
     {
         if(attacking)
-        {
-            myAnimator.SetTrigger("attack2");
-        }
-        else 
         {
             myAnimator.SetTrigger("attack1");
         }
@@ -465,30 +469,31 @@ public class PlayerScript : MonoBehaviour
     
     private void IsJumping()
     {
-        if (isJumping || isWallJumping)
+        if (isJumping || isWallJumping && !attacking)
         {
             myAnimator.SetTrigger("jump");
             myAnimator.SetBool("walled", false);
         }
-        else if (isJumping)
+        else if (isJumping && !attacking)
         {
             myAnimator.SetTrigger("jump");
 
         }
         else 
         {
-            speed = maxSpeed;
+
+            // speed = maxSpeed;
             myAnimator.ResetTrigger("jump");
         }
     }
     private void IsFalling()
     {
-        if (isFalling && isWallSliding)
+        if (isFalling && isWallSliding && !attacking)
         {
             myAnimator.SetBool("walled", true);
             myAnimator.SetBool("falling", true);
         }
-        else if (isFalling)
+        else if (isFalling && !attacking)
         {
             myAnimator.SetBool("falling", true);
         }
