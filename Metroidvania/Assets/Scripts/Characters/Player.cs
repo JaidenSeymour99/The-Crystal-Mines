@@ -27,6 +27,7 @@ public class Player : Character
     private bool isWallSliding;
     private float wallSlidingSpeed = 2f;
     private float originalGravity;
+    private bool isWalking;
 
     [Header("Wall Jump Details")]
     [SerializeField]private float wallJumpingDirection;
@@ -290,12 +291,19 @@ public class Player : Character
             }    
 
         }
+        else if (context.performed && IsGrounded())
+        {
+            AudioManager.instance.WalkSFX();
+            direction = context.ReadValue<Vector2>().x;
+        }
         else if (context.performed)
         {
             direction = context.ReadValue<Vector2>().x;
         }
         else if (context.canceled)
         {
+            
+            AudioManager.instance.StopWalkSFX();
             direction = context.ReadValue<Vector2>().x;
         }
     }
@@ -415,6 +423,15 @@ public class Player : Character
     }
 
     #region Coroutines
+
+
+    // IEnumerator WalkSound()
+    // {
+    //     isWalking = false;
+    //     yield return new WaitForSeconds(.5f);
+    //     AudioManager.instance.WalkSFX();
+    //     isWalking = true;
+    // }
 
     IEnumerator WallJumpCooldown()
     {
