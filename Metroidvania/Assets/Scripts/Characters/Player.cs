@@ -161,14 +161,15 @@ public class Player : Character
 
     public override IEnumerator DisableOnDeath()
     {
-        //die animation
         myAnimator.SetBool("IsDead", true);
         yield return new WaitForSeconds(.8f);
         GetComponent<Collider2D>().enabled = false;
         GetComponent<SpriteRenderer>().enabled = false;
         this.enabled = false;
         yield return null;
+    
     }
+
 
     protected override void Flip()
     {
@@ -176,7 +177,12 @@ public class Player : Character
         dashingPower *= -1f;
     }
 
-
+        protected override void OnDrawGizmos()
+    {
+        base.OnDrawGizmos();
+        Gizmos.DrawWireSphere(transform.position, interactRange);
+    }
+    
     #endregion
 
     #region animation control 
@@ -425,13 +431,7 @@ public class Player : Character
     #region Coroutines
 
 
-    // IEnumerator WalkSound()
-    // {
-    //     isWalking = false;
-    //     yield return new WaitForSeconds(.5f);
-    //     AudioManager.instance.WalkSFX();
-    //     isWalking = true;
-    // }
+
 
     IEnumerator WallJumpCooldown()
     {
@@ -449,6 +449,7 @@ public class Player : Character
         isWallJumping = true;
         myAnimator.SetTrigger("jump");
         myAnimator.SetBool("walled", false);
+        AudioManager.instance.JumpSFX();
         // newGravity = rb.gravityScale;
         rb.gravityScale = 0f;
         rb.velocity = new Vector2(wallJumpingDirection * wallJumpingPower.x, wallJumpingPower.y);   
@@ -493,4 +494,7 @@ public class Player : Character
     }
 
     #endregion
+
+
+
 }

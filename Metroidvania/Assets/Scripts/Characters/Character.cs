@@ -44,7 +44,7 @@ public class Character : MonoBehaviour
 
 
 
-    protected Collider2D[] hitEnemies;
+    
 
     public virtual void Start()
     {
@@ -149,4 +149,16 @@ public class Character : MonoBehaviour
     {
         return Physics2D.OverlapCircle(wallCheck.position, radOfCircle, wallLayer);
     }
+
+    //used to draw a gizmo that is visible to the editor but not in game.
+    protected virtual void OnDrawGizmos()
+    {
+        
+        Gizmos.DrawSphere(groundCheck.position, radOfCircle);
+        Gizmos.DrawSphere(wallCheck.position, radOfCircle);
+        if(attackPoint == null)
+            return;
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+    }
+
 }
