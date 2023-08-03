@@ -469,6 +469,7 @@ public class Player : Character
         canDash = false;
         isDashing = true;
         myAnimator.SetTrigger("dashing");
+        AudioManager.instance.DashSFX();
         // originalGravity = rb.gravityScale;
         rb.gravityScale = 0f;
         rb.velocity = new Vector2(dashingPower, 0f);

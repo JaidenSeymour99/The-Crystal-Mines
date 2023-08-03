@@ -67,6 +67,13 @@ public class AudioManager : MonoBehaviour
         SFXSource.Stop();
     }
 
+    public void DashSFX()
+    {
+        AudioClip clip = clips[4];
+        SFXSource.PlayOneShot(clip);
+    }
+
+
     public void SFX()
     {
         

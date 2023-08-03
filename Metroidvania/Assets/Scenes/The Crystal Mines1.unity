@@ -3426,6 +3426,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 780796154825806436, guid: 383c66549faee6048b290338d6f3aa3d, type: 3}
+      propertyPath: clips.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 780796154825806436, guid: 383c66549faee6048b290338d6f3aa3d, type: 3}
+      propertyPath: clips.Array.data[4]
+      value: 
+      objectReference: {fileID: 8300000, guid: d46323e22e74e46baa241cbf48c85671, type: 3}
     - target: {fileID: 780796154825806437, guid: 383c66549faee6048b290338d6f3aa3d, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -5136,9 +5144,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 908743411}
     m_Modifications:
+    - target: {fileID: 4950521811499363453, guid: e8bae36b607017047ace9061609051d9, type: 3}
+      propertyPath: rolloffMode
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6309599118117444192, guid: e8bae36b607017047ace9061609051d9, type: 3}
       propertyPath: m_Name
-      value: PF Village Props - Campfire (1)
+      value: PF Village Props - Campfire
       objectReference: {fileID: 0}
     - target: {fileID: 6309599118117444193, guid: e8bae36b607017047ace9061609051d9, type: 3}
       propertyPath: m_SortingOrder
@@ -8080,7 +8092,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1196234968}
   - component: {fileID: 1196234967}
-  - component: {fileID: 1196234966}
   - component: {fileID: 1196234965}
   m_Layer: 0
   m_Name: Main Camera
@@ -8123,14 +8134,6 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!81 &1196234966
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1196234964}
-  m_Enabled: 1
 --- !u!20 &1196234967
 Camera:
   m_ObjectHideFlags: 0
@@ -15227,6 +15230,7 @@ GameObject:
   - component: {fileID: 1292477240}
   - component: {fileID: 1292477243}
   - component: {fileID: 1292477245}
+  - component: {fileID: 1292477238}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -15253,6 +15257,14 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!81 &1292477238
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1292477236}
+  m_Enabled: 1
 --- !u!95 &1292477239
 Animator:
   serializedVersion: 3
@@ -15692,6 +15704,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 908743411}
     m_Modifications:
+    - target: {fileID: 4950521811499363453, guid: e8bae36b607017047ace9061609051d9, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4950521811499363453, guid: e8bae36b607017047ace9061609051d9, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6309599118117444192, guid: e8bae36b607017047ace9061609051d9, type: 3}
       propertyPath: m_Name
       value: PF Village Props - Campfire
