@@ -5,8 +5,10 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine.Audio;
 
+
 public class SettingsMenu : MonoBehaviour
 {
+    private MainMenu menu;
     //Array of resoulutions.
     Resolution[] resolutions;
     //Dropdown reference
