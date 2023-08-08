@@ -310,6 +310,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: fe0b1f9aeb45b41b089175aeeabd5d95, type: 3}
   - {fileID: 8300000, guid: eaae8fe8d600e1f459f34aa5757fa3b8, type: 3}
   - {fileID: 8300000, guid: df7087e4d8a8bb546bc08ce68632903f, type: 3}
+  - {fileID: 8300000, guid: d46323e22e74e46baa241cbf48c85671, type: 3}
+  - {fileID: 8300000, guid: ecd482b2e813352418275428ed1a64f9, type: 3}
+  - {fileID: 8300000, guid: 22ce9f0bdf3511147a88cd8d729bc2f7, type: 3}
+  - {fileID: 8300000, guid: abc58b285638b864ca5624431669d71b, type: 3}
   mixer: {fileID: 24100000, guid: 457efe2287824d048a1ae3637950d120, type: 2}
 --- !u!1 &780796155350519693
 GameObject:

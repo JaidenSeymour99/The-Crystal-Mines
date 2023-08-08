@@ -74,6 +74,42 @@ public class AudioManager : MonoBehaviour
     }
 
 
+    public void Lvl1BgMusic()
+    {
+        AudioClip clip = clips[5];
+        MusicSource.clip = clip;
+        MusicSource.loop = true;
+        MusicSource.Play();
+    }
+    public void Lvl2BgMusic()
+    {
+        AudioClip clip = clips[6];
+        MusicSource.clip = clip;
+        MusicSource.loop = true;
+        MusicSource.Play();
+    }
+
+    public void BossMusic()
+    {
+        AudioClip clip = clips[7];
+        MusicSource.clip = clip;
+        MusicSource.loop = true;
+        MusicSource.Play();
+    }
+
+    public void StopBgMusic()
+    {
+        AudioClip clip1 = clips[5];
+        AudioClip clip2 = clips[6];
+        AudioClip clip3 = clips[7];
+        MusicSource.clip = clip1;
+        MusicSource.Stop();
+        MusicSource.clip = clip2;
+        MusicSource.Stop();
+        MusicSource.clip = clip3;
+        MusicSource.Stop();
+    }
+
     public void SFX()
     {
         
