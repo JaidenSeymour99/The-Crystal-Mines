@@ -6,6 +6,12 @@ using UnityEngine.InputSystem;
 
 public class Enemy : Character
 {
+    [SerializeField] private string enemyName;
+    
+    private Transform target;
+    [SerializeField] private float chaseRange;
+    [SerializeField] private Transform chase;
+
     [Header("Rigidbody, Animator")]
     private Rigidbody2D rb; 
     private Animator myAnimator; 
@@ -18,10 +24,27 @@ public class Enemy : Character
         rb = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
         base.Start();
+        target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
     }
 
 
+    public override void Update()
+    {
+        base.Update();
 
+        if(currentHealth >= 0f) 
+        {
+            myAnimator.SetBool("Idle", true);
+        }
+        
+
+    }
+
+    public override void FixedUpdate()
+    {
+        base.Update();
+        Move();
+    }
 
     protected override void Attack()
     {
@@ -33,6 +56,14 @@ public class Enemy : Character
             enemy.GetComponent<Player>().TakeDamage(attackDamage);
             
         }
+    }
+    private void Move()
+    {
+        if(Vector2.Distance(rb.position, target.position) < chaseRange)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+        }
+        
     }
 
     public override void TakeDamage(float damage)
@@ -51,6 +82,12 @@ public class Enemy : Character
         GetComponent<SpriteRenderer>().enabled = false;
         this.enabled = false;
         yield return null;
+    }
+
+    protected override void OnDrawGizmos()
+    {
+        base.OnDrawGizmos();
+        Gizmos.DrawWireSphere(chase.position, chaseRange);
     }
 
     #endregion

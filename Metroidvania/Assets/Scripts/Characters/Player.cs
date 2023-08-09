@@ -133,7 +133,6 @@ public class Player : Character
         if(isDashing || isWallJumping) return;
         //controlling the movement of the player, changing the x velocity.
         if(IsWalled()) StartCoroutine(WallJumpCooldown());
-        if(direction > 0 || direction < 0) ChangeDirection();
         rb.velocity = new Vector2(direction * speed, rb.velocity.y);
 
     }

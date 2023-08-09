@@ -57,14 +57,17 @@ public class Character : MonoBehaviour
     public virtual void Update()
     {
         if(PauseScript.isPaused) return;
-
+        if(currentHealth <= 0)
+        {
+            Die();
+        }
 
     }
 
     public virtual void FixedUpdate()
     {
         if(PauseScript.isPaused) return;
-        
+        if(direction > 0 || direction < 0) ChangeDirection();
     }
 
     protected virtual void Attack()
