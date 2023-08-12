@@ -8,6 +8,7 @@ public class Player : Character
     [Header("Rigidbody, Animator")]
     private Rigidbody2D rb; 
     private Animator myAnimator; 
+    private SpriteRenderer playerSprite;
 
     [Header("Dash Details")]
     [SerializeField]private TrailRenderer tr;
@@ -49,16 +50,34 @@ public class Player : Character
     [SerializeField] private GameObject cameraFollow;
     private CameraFollowObject cameraFollowObject;
 
+    [Header("IFrame")]
+    [SerializeField] private Color flashColour;
+    [SerializeField] private Color normalColour;
+    [SerializeField] private float flashDuration;
+    [SerializeField] private int numberOfFlashes;
+    [SerializeField] private Collider2D triggerCollider2D;
 
-    
+    [Header("Ground Details")]
+    [SerializeField] private float radOfCircle = 0.03f;
+    [SerializeField] private bool grounded;
+    [SerializeField] private LayerMask groundMask;
+    [SerializeField] private Transform groundCheck;
 
+    [Header("Wall Details")]
+    [SerializeField] private Transform wallCheck;
+    [SerializeField] private LayerMask wallLayer;
+
+    [Header("Health Bar")]
+    public HealthBar healthBar;
 
     #region Overrides
     public override void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
+        playerSprite = GetComponent<SpriteRenderer>();
         base.Start();
+        healthBar.SetMaxHealth(maxHealth);
         maxJumps = 2f;
         originalGravity = rb.gravityScale;
         cameraFollowObject = cameraFollow.GetComponent<CameraFollowObject>();
@@ -153,6 +172,7 @@ public class Player : Character
     public override void TakeDamage(float damage)
     {
         base.TakeDamage(damage);
+        healthBar.SetHealth(currentHealth);
         //play hurt anim
         myAnimator.SetTrigger("Hurt");
     }
@@ -176,8 +196,12 @@ public class Player : Character
         dashingPower *= -1f;
     }
 
-        protected override void OnDrawGizmos()
+
+
+    protected override void OnDrawGizmos()
     {
+        Gizmos.DrawSphere(groundCheck.position, radOfCircle);
+        Gizmos.DrawSphere(wallCheck.position, radOfCircle);
         base.OnDrawGizmos();
         Gizmos.DrawWireSphere(transform.position, interactRange);
     }
@@ -413,19 +437,7 @@ public class Player : Character
 
     #endregion
 
-    private void WallSlide()
-    {
-        if(IsWalled() && !IsGrounded() && (direction > 0f || direction < 0f)) 
-        {
-            isWallSliding = true;
-            rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.y, -wallSlidingSpeed, float.MaxValue));
-            
-        }
-        else
-        {
-            isWallSliding = false;
-        }
-    }
+
 
     #region Coroutines
 
@@ -492,8 +504,48 @@ public class Player : Character
 
     }
 
+       private IEnumerator FlashCoroutine()
+    {
+        int flashes = 0;
+        triggerCollider2D.enabled = false;
+        while(flashes < numberOfFlashes)
+        {
+            playerSprite.color = flashColour;
+            yield return new WaitForSeconds(flashDuration);
+            playerSprite.color = normalColour;
+            yield return new WaitForSeconds(flashDuration);
+            flashes++;
+        }
+        triggerCollider2D.enabled = true;
+    }
+
     #endregion
 
+     //bool to check if the player is on the ground. returns true or false.
+    private bool IsGrounded()
+    {
+        //drawing a small circle under the rigid body to check if its touching the ground mask. if it is return true. if not return false.
+        return Physics2D.OverlapCircle(groundCheck.position, radOfCircle, groundMask);
+    }
+
+    //bool. checking for player / wall overlap. returns true or false.
+    private bool IsWalled()
+    {
+        return Physics2D.OverlapCircle(wallCheck.position, radOfCircle, wallLayer);
+    }
 
 
+    private void WallSlide()
+    {
+        if(IsWalled() && !IsGrounded() && (direction > 0f || direction < 0f)) 
+        {
+            isWallSliding = true;
+            rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.y, -wallSlidingSpeed, float.MaxValue));
+            
+        }
+        else
+        {
+            isWallSliding = false;
+        }
+    }
 }

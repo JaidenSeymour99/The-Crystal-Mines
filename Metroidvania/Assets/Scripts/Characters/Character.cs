@@ -32,15 +32,7 @@ public class Character : MonoBehaviour
     protected private float nextAttackTime = 0f;
     protected private bool attacking;
 
-    [Header("Ground Details")]
-    [SerializeField] protected private float radOfCircle = 0.03f;
-    [SerializeField] protected private bool grounded;
-    [SerializeField] protected private LayerMask groundMask;
-    [SerializeField] protected private Transform groundCheck;
-
-    [Header("Wall Details")]
-    [SerializeField] protected private Transform wallCheck;
-    [SerializeField] protected private LayerMask wallLayer;
+    
 
 
 
@@ -101,6 +93,13 @@ public class Character : MonoBehaviour
         yield return null;
     }
 
+    public virtual void Knockback(Rigidbody2D myRigidbody, float knockbackTime)
+    {
+        
+        StartCoroutine(KnockbackCoroutine(myRigidbody, knockbackTime));
+        
+    }
+
 
     protected private void ChangeDirection()
     {  
@@ -140,28 +139,30 @@ public class Character : MonoBehaviour
         }
 
     }
-    //bool to check if the player is on the ground. returns true or false.
-    protected private bool IsGrounded()
+
+
+
+    protected virtual IEnumerator KnockbackCoroutine(Rigidbody2D myRigidbody, float knockbackTime) 
     {
-        //drawing a small circle under the rigid body to check if its touching the ground mask. if it is return true. if not return false.
-        return Physics2D.OverlapCircle(groundCheck.position, radOfCircle, groundMask);
+       if(myRigidbody != null)
+        { 
+            yield return new WaitForSeconds(knockbackTime);
+            myRigidbody.velocity = Vector2.zero;
+
+            //Vector2.zero is short hand for writing Vector2(0,0);
+        }
     }
 
-    //bool. checking for player / wall overlap. returns true or false.
-    protected private bool IsWalled()
-    {
-        return Physics2D.OverlapCircle(wallCheck.position, radOfCircle, wallLayer);
-    }
 
     //used to draw a gizmo that is visible to the editor but not in game.
     protected virtual void OnDrawGizmos()
     {
-        
-        Gizmos.DrawSphere(groundCheck.position, radOfCircle);
-        Gizmos.DrawSphere(wallCheck.position, radOfCircle);
         if(attackPoint == null)
             return;
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
+
+
+    
 
 }

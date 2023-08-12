@@ -132,9 +132,11 @@ GameObject:
   - component: {fileID: 4472224613996600004}
   - component: {fileID: 4472224613996600007}
   - component: {fileID: 4472224613996600002}
+  - component: {fileID: 6088662458620997378}
   - component: {fileID: 4472224613996600009}
   - component: {fileID: 4472224613996600006}
   - component: {fileID: 4472224613996600005}
+  - component: {fileID: 5106789534570800522}
   - component: {fileID: 4472224613996600003}
   - component: {fileID: 4472224613996600008}
   m_Layer: 7
@@ -261,6 +263,32 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.1692312, y: 0.32862753}
   m_EdgeRadius: 0
+--- !u!61 &6088662458620997378
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4472224613996600010}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: d8656cc9c4fe95443b68c482c4fbff34, type: 2}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.0011652559, y: 0.02896329}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.57, y: 0.41}
+    oldSize: {x: 0.18, y: 0.33}
+    newSize: {x: 0.69, y: 0.44}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.1692312, y: 0.32862753}
+  m_EdgeRadius: 0
 --- !u!95 &4472224613996600009
 Animator:
   serializedVersion: 3
@@ -305,16 +333,6 @@ MonoBehaviour:
   enemyLayers:
     serializedVersion: 2
     m_Bits: 512
-  radOfCircle: 0.03
-  grounded: 0
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 64
-  groundCheck: {fileID: 4472224613593841360}
-  wallCheck: {fileID: 4472224612583122607}
-  wallLayer:
-    serializedVersion: 2
-    m_Bits: 256
   tr: {fileID: 4472224613996600003}
   dashingPower: 40
   dashingTime: 0.1
@@ -330,6 +348,21 @@ MonoBehaviour:
     m_Bits: 1024
   fallThrough: 0
   cameraFollow: {fileID: 4472224614044602059}
+  flashColour: {r: 0.9528302, g: 0.049439307, b: 0.049439307, a: 0.5803922}
+  normalColour: {r: 1, g: 1, b: 1, a: 0}
+  flashDuration: 0.08
+  numberOfFlashes: 4
+  triggerCollider2D: {fileID: 6088662458620997378}
+  radOfCircle: 0.03
+  grounded: 0
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 64
+  groundCheck: {fileID: 4472224613593841360}
+  wallCheck: {fileID: 4472224612583122607}
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!114 &4472224613996600005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -488,6 +521,21 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &5106789534570800522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4472224613996600010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 519af310fee3bf5448ca8dd678605a14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  knockForce: 3
+  knockbackTime: 0.3
+  otherTag: Enemy
 --- !u!96 &4472224613996600003
 TrailRenderer:
   serializedVersion: 2

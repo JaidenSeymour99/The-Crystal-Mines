@@ -1505,6 +1505,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &584738114 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5281647167669453553, guid: 512edb7afa3ee064e90aaa3469f26e00, type: 3}
+  m_PrefabInstance: {fileID: 627292170}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &594029119
 GameObject:
   m_ObjectHideFlags: 0
@@ -1655,6 +1666,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5281647167246090077, guid: 512edb7afa3ee064e90aaa3469f26e00, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5281647168091202811, guid: 512edb7afa3ee064e90aaa3469f26e00, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7455847115032294227, guid: 512edb7afa3ee064e90aaa3469f26e00, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7455847115032294227, guid: 512edb7afa3ee064e90aaa3469f26e00, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2834,6 +2857,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &921390715 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5281647168892022538, guid: 512edb7afa3ee064e90aaa3469f26e00, type: 3}
+  m_PrefabInstance: {fileID: 627292170}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &936743808
 GameObject:
   m_ObjectHideFlags: 0
@@ -10011,6 +10039,11 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &1204372162 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5281647167699882029, guid: 512edb7afa3ee064e90aaa3469f26e00, type: 3}
+  m_PrefabInstance: {fileID: 627292170}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1230420113
 GameObject:
   m_ObjectHideFlags: 0
@@ -10544,6 +10577,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1405793901 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5281647168741853748, guid: 512edb7afa3ee064e90aaa3469f26e00, type: 3}
+  m_PrefabInstance: {fileID: 627292170}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1492185464
 GameObject:
   m_ObjectHideFlags: 0
@@ -10875,6 +10913,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1575317177 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5281647169364225402, guid: 512edb7afa3ee064e90aaa3469f26e00, type: 3}
+  m_PrefabInstance: {fileID: 627292170}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1581304882
 GameObject:
   m_ObjectHideFlags: 0
@@ -12803,6 +12852,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1919395857 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5281647167431127196, guid: 512edb7afa3ee064e90aaa3469f26e00, type: 3}
+  m_PrefabInstance: {fileID: 627292170}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1932930861
 GameObject:
   m_ObjectHideFlags: 0
@@ -13090,6 +13144,17 @@ Transform:
   m_Father: {fileID: 1650543120}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1969955002 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2304668228382230742, guid: 512edb7afa3ee064e90aaa3469f26e00, type: 3}
+  m_PrefabInstance: {fileID: 627292170}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43d1cd3b158f8cd409f99202a8974a59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2029640769
 GameObject:
   m_ObjectHideFlags: 0
@@ -13734,12 +13799,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce262d9008bf3a445a8420134c50fb5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialoguePanel: {fileID: 0}
-  dialogueText: {fileID: 0}
+  dialoguePanel: {fileID: 1405793901}
+  dialogueText: {fileID: 584738114}
   dialogue:
-  - Hello
-  - How are you?
-  contButton: {fileID: 0}
+  - Hey bud, are you able to help us out?
+  - There was another raid last night
+  - Can you help clear out the remaining invaders?
+  contButton: {fileID: 921390715}
   wordSpeed: 0.08
 --- !u!1 &1391138344015485
 GameObject:
@@ -16439,13 +16505,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce262d9008bf3a445a8420134c50fb5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialoguePanel: {fileID: 0}
-  dialogueText: {fileID: 0}
+  dialoguePanel: {fileID: 1919395857}
+  dialogueText: {fileID: 1575317177}
   dialogue:
-  - Squigll!
-  - Hello :3
-  contButton: {fileID: 0}
-  wordSpeed: 0
+  - I can't believe they took Glob this time
+  - 'Those bandits are troublesome bunch '
+  - Be careful out there!
+  contButton: {fileID: 1204372162}
+  wordSpeed: 0.08
 --- !u!61 &4024165913027523200
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -16639,6 +16706,14 @@ PrefabInstance:
     - target: {fileID: 4472224613996600005, guid: f0a1f6623e52177449bddb95f89d2b78, type: 3}
       propertyPath: m_UIInputModule
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4472224613996600006, guid: f0a1f6623e52177449bddb95f89d2b78, type: 3}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 1969955002}
+    - target: {fileID: 4472224613996600007, guid: f0a1f6623e52177449bddb95f89d2b78, type: 3}
+      propertyPath: m_Mass
+      value: 2.8753507
       objectReference: {fileID: 0}
     - target: {fileID: 4472224613996600010, guid: f0a1f6623e52177449bddb95f89d2b78, type: 3}
       propertyPath: m_Name

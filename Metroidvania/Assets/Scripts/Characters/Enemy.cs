@@ -48,14 +48,18 @@ public class Enemy : Character
 
     protected override void Attack()
     {
-        //detect enemies
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
-        //damage them
-        foreach(Collider2D enemy in hitEnemies)
-        {
-            enemy.GetComponent<Player>().TakeDamage(attackDamage);
+        
+        
+
+
+        // //detect enemies
+        // Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
+        // //damage them
+        // foreach(Collider2D enemy in hitEnemies)
+        // {
+        //     enemy.GetComponent<Player>().TakeDamage(attackDamage);
             
-        }
+        // }
     }
     private void Move()
     {
