@@ -5,7 +5,7 @@ using UnityEngine;
 public class OneWayPlatform : MonoBehaviour
 {
 
-    PlayerScript playerControls;
+    Player playerControls;
     BoxCollider2D box;
 
     private void Awake()
@@ -18,7 +18,7 @@ public class OneWayPlatform : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.collider.CompareTag("Player"))
-            playerControls = collision.gameObject.GetComponent<PlayerScript>();
+            playerControls = collision.gameObject.GetComponent<Player>();
     }
 
     private void OnCollisionStay2D(Collision2D collision)
