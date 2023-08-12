@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 //dont want to implement a base character so abstract class, want other things to be able to use this freely.
 public class Character : MonoBehaviour
 {
+    private SpriteRenderer sprite;
 
     [Header("Character Health")]
     [SerializeField] public float maxHealth;
@@ -34,7 +35,12 @@ public class Character : MonoBehaviour
 
     
 
-
+    [Header("IFrame")]
+    [SerializeField] private Color flashColour;
+    [SerializeField] private Color normalColour;
+    [SerializeField] private float flashDuration;
+    [SerializeField] private int numberOfFlashes;
+    [SerializeField] private Collider2D triggerCollider2D;
 
     
 
@@ -43,6 +49,7 @@ public class Character : MonoBehaviour
         speed = maxSpeed;
         attacking = false;
         currentHealth = maxHealth;
+        sprite = GetComponent<SpriteRenderer>();
     }
 
 
@@ -140,6 +147,20 @@ public class Character : MonoBehaviour
 
     }
 
+    protected private IEnumerator FlashCoroutine()
+    {
+        int flashes = 0;
+        triggerCollider2D.enabled = false;
+        while(flashes < numberOfFlashes)
+        {
+            sprite.color = flashColour;
+            yield return new WaitForSeconds(flashDuration);
+            sprite.color = normalColour;
+            yield return new WaitForSeconds(flashDuration);
+            flashes++;
+        }
+        triggerCollider2D.enabled = true;
+    }
 
 
     protected virtual IEnumerator KnockbackCoroutine(Rigidbody2D myRigidbody, float knockbackTime) 

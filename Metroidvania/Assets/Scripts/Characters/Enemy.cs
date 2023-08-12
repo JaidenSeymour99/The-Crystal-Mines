@@ -49,7 +49,7 @@ public class Enemy : Character
     protected override void Attack()
     {
         
-        
+
 
 
         // //detect enemies
@@ -74,7 +74,7 @@ public class Enemy : Character
     {
         base.TakeDamage(damage);
         //play hurt anim
-        myAnimator.SetTrigger("Hurt");
+        
     }
 
     public override IEnumerator DisableOnDeath()

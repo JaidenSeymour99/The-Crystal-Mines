@@ -8,7 +8,7 @@ public class Player : Character
     [Header("Rigidbody, Animator")]
     private Rigidbody2D rb; 
     private Animator myAnimator; 
-    private SpriteRenderer playerSprite;
+    
 
     [Header("Dash Details")]
     [SerializeField]private TrailRenderer tr;
@@ -50,12 +50,7 @@ public class Player : Character
     [SerializeField] private GameObject cameraFollow;
     private CameraFollowObject cameraFollowObject;
 
-    [Header("IFrame")]
-    [SerializeField] private Color flashColour;
-    [SerializeField] private Color normalColour;
-    [SerializeField] private float flashDuration;
-    [SerializeField] private int numberOfFlashes;
-    [SerializeField] private Collider2D triggerCollider2D;
+    
 
     [Header("Ground Details")]
     [SerializeField] private float radOfCircle = 0.03f;
@@ -75,7 +70,6 @@ public class Player : Character
     {
         rb = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
-        playerSprite = GetComponent<SpriteRenderer>();
         base.Start();
         healthBar.SetMaxHealth(maxHealth);
         maxJumps = 2f;
@@ -504,20 +498,7 @@ public class Player : Character
 
     }
 
-       private IEnumerator FlashCoroutine()
-    {
-        int flashes = 0;
-        triggerCollider2D.enabled = false;
-        while(flashes < numberOfFlashes)
-        {
-            playerSprite.color = flashColour;
-            yield return new WaitForSeconds(flashDuration);
-            playerSprite.color = normalColour;
-            yield return new WaitForSeconds(flashDuration);
-            flashes++;
-        }
-        triggerCollider2D.enabled = true;
-    }
+    
 
     #endregion
 
