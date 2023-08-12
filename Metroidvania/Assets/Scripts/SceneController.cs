@@ -7,6 +7,8 @@ public class SceneController : MonoBehaviour
 
     public static SceneController instance;
 
+    Player player;
+
     private void Awake()
     {
         if(instance == null)
@@ -33,9 +35,16 @@ public class SceneController : MonoBehaviour
         SceneManager.LoadSceneAsync(sceneName);
     }
 
+    public void RestartScene()
+    {
+        Destroy(GameObject.Find("GameManager"));
+        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+
+    }
 
     public void MainMenu()
     {
+        Destroy(GameObject.Find("GameManager"));
         SceneManager.LoadScene(0);
     }
 }

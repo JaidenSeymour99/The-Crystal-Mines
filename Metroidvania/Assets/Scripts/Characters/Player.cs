@@ -64,10 +64,13 @@ public class Player : Character
 
     [Header("Health Bar")]
     public HealthBar healthBar;
+    
+    
 
     #region Overrides
     public override void Start()
     {
+        
         rb = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
         base.Start();
@@ -160,6 +163,7 @@ public class Player : Character
         {
             enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
             
+            
         }
     }
 
@@ -167,22 +171,22 @@ public class Player : Character
     {
         base.TakeDamage(damage);
         healthBar.SetHealth(currentHealth);
-        //play hurt anim
-        myAnimator.SetTrigger("Hurt");
     }
 
-
+    
     public override IEnumerator DisableOnDeath()
     {
-        myAnimator.SetBool("IsDead", true);
-        yield return new WaitForSeconds(.8f);
-        GetComponent<Collider2D>().enabled = false;
-        GetComponent<SpriteRenderer>().enabled = false;
-        this.enabled = false;
+        myAnimator.SetBool("die", true);
+        base.DisableOnDeath();
         yield return null;
     
     }
 
+    protected override void Die()
+    {
+        PauseScript.isDead = true;
+        base.Die();
+    }
 
     protected override void Flip()
     {

@@ -8,6 +8,9 @@ TagManager:
   - Checkpoint
   - Enemy
   - HealthBar
+  - CameraFollow
+  - GameManager
+  - MainMenu
   layers:
   - Default
   - TransparentFX

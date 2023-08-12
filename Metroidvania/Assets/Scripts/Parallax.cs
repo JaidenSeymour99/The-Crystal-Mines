@@ -32,7 +32,7 @@ public class Parallax : MonoBehaviour
     {
         startPosition = transform.position;
         startZ = transform.position.z;
-        
+        subject = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
     }
 
     // needs to be fixed update to not have the background stutter.

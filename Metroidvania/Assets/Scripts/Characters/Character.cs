@@ -11,7 +11,7 @@ public class Character : MonoBehaviour
 
     [Header("Character Health")]
     [SerializeField] public float maxHealth;
-    protected private float currentHealth; 
+    public float currentHealth; 
 
     [Header("Movement Details")]
     [SerializeField] protected private float maxSpeed = 8.0f;
@@ -46,6 +46,7 @@ public class Character : MonoBehaviour
 
     public virtual void Start()
     {
+        PauseScript.isDead = false;
         speed = maxSpeed;
         attacking = false;
         currentHealth = maxHealth;
@@ -55,7 +56,11 @@ public class Character : MonoBehaviour
 
     public virtual void Update()
     {
-        if(PauseScript.isPaused) return;
+        if(PauseScript.isPaused || PauseScript.isDead)
+        {
+            PauseScript.isPaused = true;
+            return;
+        }
         if(currentHealth <= 0)
         {
             Die();
@@ -65,7 +70,12 @@ public class Character : MonoBehaviour
 
     public virtual void FixedUpdate()
     {
-        if(PauseScript.isPaused) return;
+        if(PauseScript.isPaused || PauseScript.isDead)
+        {
+            PauseScript.isPaused = true;
+            return;
+        }
+            
         if(direction > 0 || direction < 0) ChangeDirection();
     }
 
@@ -167,6 +177,7 @@ public class Character : MonoBehaviour
     {
        if(myRigidbody != null)
         { 
+            StartCoroutine(FlashCoroutine());
             yield return new WaitForSeconds(knockbackTime);
             myRigidbody.velocity = Vector2.zero;
 

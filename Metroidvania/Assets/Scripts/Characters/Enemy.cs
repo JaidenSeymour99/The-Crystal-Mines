@@ -15,7 +15,8 @@ public class Enemy : Character
     [Header("Rigidbody, Animator")]
     private Rigidbody2D rb; 
     private Animator myAnimator; 
-    
+    Collider2D otherTag;
+
     #region Overrides
 
 
@@ -25,6 +26,7 @@ public class Enemy : Character
         myAnimator = GetComponent<Animator>();
         base.Start();
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        Collider2D otherTag = GameObject.FindGameObjectWithTag("Player").GetComponent<Collider2D>();
     }
 
 
@@ -46,20 +48,18 @@ public class Enemy : Character
         Move();
     }
 
-    protected override void Attack()
+
+    protected void Attack(Collider2D other)
     {
-        
+        if(Time.time >= nextAttackTime)
+        {
+            if(other.gameObject.CompareTag("Player"));
+            {
 
-
-
-        // //detect enemies
-        // Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
-        // //damage them
-        // foreach(Collider2D enemy in hitEnemies)
-        // {
-        //     enemy.GetComponent<Player>().TakeDamage(attackDamage);
-            
-        // }
+                other.GetComponent<Player>().TakeDamage(attackDamage);
+                nextAttackTime = Time.time + 1f / attackRate;
+            }
+        }
     }
     private void Move()
     {
@@ -73,7 +73,7 @@ public class Enemy : Character
     public override void TakeDamage(float damage)
     {
         base.TakeDamage(damage);
-        //play hurt anim
+        StartCoroutine(FlashCoroutine());
         
     }
 
@@ -88,6 +88,9 @@ public class Enemy : Character
         yield return null;
     }
 
+    
+
+
     protected override void OnDrawGizmos()
     {
         base.OnDrawGizmos();
@@ -95,4 +98,9 @@ public class Enemy : Character
     }
 
     #endregion
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        Attack(other);
+    }
 }
