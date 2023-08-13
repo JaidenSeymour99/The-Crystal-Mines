@@ -53,7 +53,7 @@ public class LoadNextArea : MonoBehaviour
         }
     }
 
-
+    
     void UseCam1()
     {
         scene1.SetActive(true);

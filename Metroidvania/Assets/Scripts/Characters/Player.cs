@@ -65,8 +65,6 @@ public class Player : Character
     [Header("Health Bar")]
     public HealthBar healthBar;
 
-    //this is the knockback value, form knockback, this needs to be updated to take the value from knockback script.
-    private float kb = 0.3f;
     
     
 
@@ -165,8 +163,7 @@ public class Player : Character
         foreach(Collider2D enemy in hitEnemies)
         {
             enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
-            //using kb for now, no time to not hardcode it.
-            enemy.GetComponent<Enemy>().Knockback(rb, kb);
+                       
             
         }
     }

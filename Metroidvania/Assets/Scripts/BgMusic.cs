@@ -21,7 +21,7 @@ public class BgMusic : MonoBehaviour
     {
         
         AudioManager.instance.StopBgMusic();
-        
+
         if (bgMusic == 1f)
         {
             AudioManager.instance.Lvl1BgMusic();
@@ -33,8 +33,7 @@ public class BgMusic : MonoBehaviour
         else if(bgMusic == 3f)
         {
             AudioManager.instance.BossMusic();
-        }
-        
+        }       
 
 
     }

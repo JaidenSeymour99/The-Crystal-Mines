@@ -52,30 +52,13 @@ public class Enemy : Character
     }
 
 
-    protected void Attack(Collider2D other)
-    {
-        if(Time.time >= nextAttackTime)
-        {
-            if(other.gameObject.CompareTag("Player"));
-            {
-
-                other.GetComponent<Player>().TakeDamage(attackDamage);
-                nextAttackTime = Time.time + 1f / attackRate;
-            }
-        }
-    }
-    private void Move()
-    {
-        if(Vector2.Distance(rb.position, target.position) < chaseRange)
-        {
-            transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
-        }
-        
-    }
+    
+    
 
     public override void TakeDamage(float damage)
     {
         base.TakeDamage(damage);
+
         StartCoroutine(FlashCoroutine());
         
     }
@@ -102,6 +85,29 @@ public class Enemy : Character
     }
 
     #endregion
+
+
+    protected void Attack(Collider2D other)
+    {
+        if(Time.time >= nextAttackTime)
+        {
+            if(other.gameObject.CompareTag("Player"));
+            {
+
+                other.GetComponent<Player>().TakeDamage(attackDamage);
+                nextAttackTime = Time.time + 1f / attackRate;
+            }
+        }
+    }
+
+    private void Move()
+    {
+        if(Vector2.Distance(rb.position, target.position) < chaseRange)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+        }
+        
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
