@@ -12,6 +12,11 @@ public class BgMusic : MonoBehaviour
     }
 
 
+    void Start()
+    {
+        SetBgMusic();
+    }
+
     void SetBgMusic()
     {
         

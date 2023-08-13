@@ -59,7 +59,7 @@ public class LoadNextArea : MonoBehaviour
         scene1.SetActive(true);
         scene2.SetActive(false);
         scene3.SetActive(false);
-        //scene4.SetActive(false);
+        scene4.SetActive(false);
 
     }
 
@@ -68,7 +68,7 @@ public class LoadNextArea : MonoBehaviour
         scene1.SetActive(false);
         scene2.SetActive(true);
         scene3.SetActive(false);
-        //scene4.SetActive(false);
+        scene4.SetActive(false);
     }
 
     void UseCam3()
@@ -76,14 +76,14 @@ public class LoadNextArea : MonoBehaviour
         scene1.SetActive(false);
         scene2.SetActive(false);
         scene3.SetActive(true);
-        //scene4.SetActive(false);
+        scene4.SetActive(false);
     }
     void UseCam4()
     {
         scene1.SetActive(false);
         scene2.SetActive(false);
         scene3.SetActive(false);
-        //scene4.SetActive(true);
+        scene4.SetActive(true);
     }
     // void SwitchPriority(CinemachineVirtualCamera camera)
     // {
