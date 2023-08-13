@@ -12,6 +12,8 @@ public class Enemy : Character
     [SerializeField] private float chaseRange;
     [SerializeField] private Transform chase;
 
+    private bool alive;
+
     [Header("Rigidbody, Animator")]
     private Rigidbody2D rb; 
     private Animator myAnimator; 
@@ -25,6 +27,7 @@ public class Enemy : Character
         rb = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
         base.Start();
+        alive = true;
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         Collider2D otherTag = GameObject.FindGameObjectWithTag("Player").GetComponent<Collider2D>();
     }
@@ -80,6 +83,7 @@ public class Enemy : Character
     public override IEnumerator DisableOnDeath()
     {
         //die animation
+        alive = false;
         myAnimator.SetBool("IsDead", true);
         yield return new WaitForSeconds(.8f);
         GetComponent<Collider2D>().enabled = false;
@@ -101,6 +105,10 @@ public class Enemy : Character
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Attack(other);
+        if(alive)
+        {
+            Attack(other);
+
+        }
     }
 }

@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/TheCrystalVillage1.unity
     guid: ad710619a7901d54e96fd2ce3de7e642
   - enabled: 1
+    path: Assets/Scenes/TheCrystalVillage2.unity
+    guid: e30b5d61ca74cfc45bfda6e0c8234742
+  - enabled: 1
     path: Assets/Scenes/TheCrystalMines1.unity
     guid: edd995f74fbae0d4db610a0766a205c8
   - enabled: 1

@@ -7,7 +7,11 @@ public class SceneController : MonoBehaviour
 
     public static SceneController instance;
 
-    Player player;
+   
+
+
+
+
 
     private void Awake()
     {
@@ -20,6 +24,13 @@ public class SceneController : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+    }
+
+    void Start()
+    {
+
+        
 
     }
 

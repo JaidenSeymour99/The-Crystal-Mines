@@ -8,6 +8,7 @@ public class NPCInteractable : MonoBehaviour
 {
 
     [SerializeField] private GameObject dialoguePanel;
+    [SerializeField] private GameObject interact;
     [SerializeField] private TextMeshProUGUI dialogueText;
     [SerializeField] private string[] dialogue;
     private int index = 0;
@@ -15,15 +16,30 @@ public class NPCInteractable : MonoBehaviour
 
     [SerializeField] private GameObject contButton;
     [SerializeField] private float wordSpeed;
+    
 
+    // void Start()
+    // {
+    //     interact = GameObject.FindGameObjectWithTag("Interact");
+    // }
+
+    // void Update()
+    // {
+    //     showInteractIcon();
+    // }
 
     //no time to make this not bug out when skipping through the text too fast.
     public void Interact()
     {
         if (!dialoguePanel.activeInHierarchy)
         {
+            resetText();
             dialoguePanel.SetActive(true);
             StartCoroutine(Typing());
+        }
+        else if (dialoguePanel.activeInHierarchy)
+        {
+            NextLine();
         }
         else if (dialogueText.text == dialogue[index])
         {
@@ -34,11 +50,12 @@ public class NPCInteractable : MonoBehaviour
             resetText();
         }
 
-        contButton.SetActive(true);
+        
     }
 
     public void resetText()
     {
+        StopCoroutine(Typing());
         dialogueText.text = "";
         index = 0;
         dialoguePanel.SetActive(false);
@@ -55,10 +72,9 @@ public class NPCInteractable : MonoBehaviour
 
     public void NextLine()
     {
-        contButton.SetActive(false);
-
         if(index < dialogue.Length -1)
         {
+            StopCoroutine(Typing());
             index++;
             dialogueText.text = "";
             StartCoroutine(Typing());
@@ -68,6 +84,19 @@ public class NPCInteractable : MonoBehaviour
             resetText();
         }
     }
+
+    // void showInteractIcon()
+    // {
+    //     if(playerIsClose)
+    //     {
+    //         interact.SetActive(true);
+    //     }
+    //     else 
+    //     {
+    //         interact.SetActive(false);
+    //     }
+    // }
+
 
 
     private void OnTriggerEnter2D(Collider2D other)
