@@ -19,6 +19,8 @@ public class PauseScript : MonoBehaviour
 
     void Awake()
     {
+        isPaused = false;
+        isDead = false;
         playerControls = new PlayerControls();
     }
 
@@ -36,6 +38,8 @@ public class PauseScript : MonoBehaviour
         if(SceneManager.GetActiveScene().buildIndex == 0)
         {
             healthBarUI.SetActive(false);
+            isPaused = false;
+            isDead = false;
             mainMenuUI.SetActive(true);
         } else 
         {
@@ -51,12 +55,16 @@ public class PauseScript : MonoBehaviour
 
     void Update()
     {
-
         if(isDead)
         {
             StartCoroutine(PauseGameDeath());
         }
         else StopCoroutine(PauseGameDeath());
+
+        if(SceneManager.GetActiveScene().buildIndex >= 1)
+        {
+            mainMenuUI.SetActive(false);
+        }
         
     }
 
@@ -78,6 +86,7 @@ public class PauseScript : MonoBehaviour
         
         isPaused = true;
         pauseUI.SetActive(true);
+        healthBarUI.SetActive(true);
     }
     public IEnumerator PauseGameDeath()
     {
@@ -95,6 +104,7 @@ public class PauseScript : MonoBehaviour
         isPaused = false;
         isDead = false;
         deathUI.SetActive(false);
+        healthBarUI.SetActive(true);
         Time.timeScale = 1;
         SceneController.instance.RestartScene();
         
@@ -107,5 +117,6 @@ public class PauseScript : MonoBehaviour
         
         isPaused = false;
         pauseUI.SetActive(false);
+        healthBarUI.SetActive(true);
     }
 }

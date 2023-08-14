@@ -7,9 +7,11 @@ public class MainMenu : MonoBehaviour
 {
 
     public static MainMenu menu;
+
+    public LoadNextArea next;
     public void PlayGame()
     {
-        Destroy(GameObject.Find("GameManager"));
+        // Destroy(GameObject.Find("GameManager"));
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 

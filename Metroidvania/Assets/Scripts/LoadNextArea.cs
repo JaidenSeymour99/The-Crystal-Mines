@@ -6,6 +6,9 @@ using Cinemachine;
 
 public class LoadNextArea : MonoBehaviour
 {
+
+    public static LoadNextArea next;
+
     private GameObject player;
     private GameObject startPos;
 
@@ -16,6 +19,17 @@ public class LoadNextArea : MonoBehaviour
     [SerializeField]private GameObject scene2;
     [SerializeField]private GameObject scene3;
     [SerializeField]private GameObject scene4;
+
+
+    void Awake()
+    {
+        player = GameObject.FindGameObjectWithTag("Player"); 
+        startPos = GameObject.FindGameObjectWithTag("StartPos");
+        scene1 = GameObject.FindGameObjectWithTag("Scene1");
+        scene2 = GameObject.FindGameObjectWithTag("Scene2");
+        scene3 = GameObject.FindGameObjectWithTag("Scene3");
+        scene4 = GameObject.FindGameObjectWithTag("Scene4");
+    }
 
 
     void Start()
@@ -54,7 +68,7 @@ public class LoadNextArea : MonoBehaviour
     }
 
     
-    void UseCam1()
+    public void UseCam1()
     {
         scene1.SetActive(true);
         scene2.SetActive(false);
