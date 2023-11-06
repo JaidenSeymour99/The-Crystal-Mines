@@ -4,7 +4,7 @@ In this project I Create a 2D metroidvania video game, my inspiration for making
 
 
 ## Version 1
-This version was submitted as my 4th year final project 
-
+This version was submitted as my 4th year final project. The link below is a screencast of what was submitted for my final project.
+https://www.youtube.com/watch?v=kQOlj9I1IsA
 ## Version 2
 This version is what I have done since leaving college.
