@@ -47,6 +47,7 @@ public class Character : MonoBehaviour
     public virtual void Start()
     {
         PauseScript.isDead = false;
+        PauseScript.isPaused = false;
         speed = maxSpeed;
         attacking = false;
         currentHealth = maxHealth;
@@ -56,11 +57,11 @@ public class Character : MonoBehaviour
 
     public virtual void Update()
     {
-        if(PauseScript.isPaused || PauseScript.isDead)
-        {
-            PauseScript.isPaused = true;
-            return;
-        }
+        // if(PauseScript.isPaused || PauseScript.isDead)
+        // {
+        //     PauseScript.isPaused = true; //does nothing, already set to true if is dead or is paused.
+        //     return;
+        // }
         if(currentHealth <= 0)
         {
             Die();
@@ -70,11 +71,11 @@ public class Character : MonoBehaviour
 
     public virtual void FixedUpdate()
     {
-        if(PauseScript.isPaused || PauseScript.isDead)
-        {
-            PauseScript.isPaused = true;
-            return;
-        }
+        // if(PauseScript.isPaused || PauseScript.isDead)
+        // {
+        //     PauseScript.isPaused = true;
+        //     return;
+        // }
             
         if(direction > 0 || direction < 0) ChangeDirection();
     }
@@ -86,12 +87,18 @@ public class Character : MonoBehaviour
 
     public virtual void TakeDamage(float damage)
     {
-        currentHealth -= damage;
-
-        if(currentHealth <= 0)
-        {
-            Die();
+        if (currentHealth <= 0) 
+        {   
+            return;
+            
         }
+        else currentHealth -= damage; 
+        
+        // this is already in update.
+        // if(currentHealth <= 0)
+        // {
+        //     Die();
+        // }
     }
 
     protected virtual void Die()
