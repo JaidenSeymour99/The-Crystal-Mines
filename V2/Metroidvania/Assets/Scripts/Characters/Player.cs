@@ -163,8 +163,6 @@ public class Player : Character
         foreach(Collider2D enemy in hitEnemies)
         {
             enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
-                       
-            
         }
     }
 

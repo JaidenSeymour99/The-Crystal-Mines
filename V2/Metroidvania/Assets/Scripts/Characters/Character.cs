@@ -42,6 +42,8 @@ public class Character : MonoBehaviour
     [SerializeField] private int numberOfFlashes;
     [SerializeField] private Collider2D triggerCollider2D;
 
+
+
     
 
     public virtual void Start()
@@ -110,10 +112,11 @@ public class Character : MonoBehaviour
 
     public virtual IEnumerator DisableOnDeath()
     {
+        GetComponent<Collider2D>().isTrigger = false;
         yield return new WaitForSeconds(.8f);
         GetComponent<Collider2D>().enabled = false;
         GetComponent<SpriteRenderer>().enabled = false;
-        this.enabled = false;
+        //this.enabled = false;
         yield return null;
     }
 
@@ -176,7 +179,8 @@ public class Character : MonoBehaviour
             yield return new WaitForSeconds(flashDuration);
             flashes++;
         }
-        triggerCollider2D.enabled = true;
+        //adding this if statement fixes the flashing after death. currently this changes the characters trigger and not the enemies, This needs to be updated to do the enemies trigger instead. 
+        if(this.currentHealth <=0) triggerCollider2D.enabled = true;
     }
 
 
