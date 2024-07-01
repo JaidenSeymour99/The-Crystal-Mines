@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -31,7 +32,7 @@ public class Character : MonoBehaviour
     [SerializeField] protected private Transform attackPoint;
     [SerializeField] protected private LayerMask enemyLayers;
     protected private float nextAttackTime = 0f;
-    protected private bool attacking;
+    // protected private bool attacking;
 
     
 
@@ -51,7 +52,7 @@ public class Character : MonoBehaviour
         PauseScript.isDead = false;
         PauseScript.isPaused = false;
         speed = maxSpeed;
-        attacking = false;
+        //attacking = false;
         currentHealth = maxHealth;
         sprite = GetComponent<SpriteRenderer>();
     }

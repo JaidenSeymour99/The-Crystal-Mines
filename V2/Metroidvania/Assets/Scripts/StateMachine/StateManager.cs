@@ -9,13 +9,18 @@ public abstract class StateManager<Estate> : MonoBehaviour where Estate : Enum
     protected BaseState<Estate> CurrentState;
     protected bool IsTransitioningState = false;
 
-    protected Animator myAnimator; 
-    protected Rigidbody2D rb;
-
+    public Animator myAnimator; 
+    public Rigidbody2D rb;
+    public bool grounded { get; private set; }
+    public bool attacking { get; private set; }
+    
 
 
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
+        myAnimator = GetComponent<Animator>();
+
         CurrentState.EnterState();
     }
 
