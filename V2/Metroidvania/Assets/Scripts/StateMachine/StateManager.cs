@@ -9,6 +9,11 @@ public abstract class StateManager<Estate> : MonoBehaviour where Estate : Enum
     protected BaseState<Estate> CurrentState;
     protected bool IsTransitioningState = false;
 
+    protected Animator myAnimator; 
+    protected Rigidbody2D rb;
+
+
+
     void Start()
     {
         CurrentState.EnterState();
