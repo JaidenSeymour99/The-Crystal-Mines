@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 public class Player : Character
 {
     
-    //public Animator myAnimator;
+    
 
     public override void Start()
     {
@@ -24,11 +24,5 @@ public class Player : Character
         base.FixedUpdate();
 
 
-    }
-
-    private void IsMoving()
-    {
-        //myAnimator.SetFloat("speed", Mathf.Abs(direction));
-        
     }
 }

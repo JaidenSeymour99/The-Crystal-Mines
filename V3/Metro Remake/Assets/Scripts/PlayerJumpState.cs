@@ -4,12 +4,15 @@ public class PlayerJumpState : PlayerBaseState
 {
     public override void EnterState(PlayerStateManager player)
     {
+        Debug.Log("idle");
+        Animator animator = player.GetComponent<Animator>();
 
+        animator.SetTrigger("jump");
     }
 
     public override void UpdateState(PlayerStateManager player)
     {
-
+        
     }
 
     public override void OnCollisionEnter(PlayerStateManager player)

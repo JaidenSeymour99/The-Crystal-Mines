@@ -12154,10 +12154,8 @@ GameObject:
   - component: {fileID: 1886260764}
   - component: {fileID: 1886260763}
   - component: {fileID: 1886260766}
-  - component: {fileID: 1886260769}
-  - component: {fileID: 1886260768}
-  - component: {fileID: 1886260767}
   - component: {fileID: 1886260770}
+  - component: {fileID: 1886260767}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -12357,8 +12355,8 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1886260769}
-        m_TargetAssemblyTypeName: Movement, Assembly-CSharp
+      - m_Target: {fileID: 1886260770}
+        m_TargetAssemblyTypeName: PlayerStateManager, Assembly-CSharp
         m_MethodName: Move
         m_Mode: 0
         m_Arguments:
@@ -12448,39 +12446,6 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &1886260768
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1886260761}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89417d0b9864a234da4d0bb4f06bff63, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxSpeed: 8
-  speed: 0
-  direction: 0
-  facingRight: 1
---- !u!114 &1886260769
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1886260761}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39c013ded4c4b5d4ca1af0f11f128919, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxSpeed: 8
-  speed: 0
-  direction: 0
-  facingRight: 1
-  rb: {fileID: 1886260764}
 --- !u!114 &1886260770
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12493,6 +12458,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 138e9058fb7c14245ad9d310fa9aae39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxSpeed: 8
+  speed: 0
+  direction: 0
+  facingRight: 1
+  rb: {fileID: 1886260764}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
