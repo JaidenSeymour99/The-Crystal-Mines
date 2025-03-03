@@ -3,8 +3,8 @@ using UnityEngine.InputSystem;
 
 public class Player : Character
 {
-
-    public Animator myAnimator;
+    
+    //public Animator myAnimator;
 
     public override void Start()
     {
@@ -28,7 +28,7 @@ public class Player : Character
 
     private void IsMoving()
     {
-        myAnimator.SetFloat("speed", Mathf.Abs(direction));
+        //myAnimator.SetFloat("speed", Mathf.Abs(direction));
         
     }
 }

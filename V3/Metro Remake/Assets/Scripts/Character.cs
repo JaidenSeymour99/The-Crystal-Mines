@@ -14,11 +14,13 @@ public class Character : MonoBehaviour
         speed = maxSpeed;
     }
 
+
     public virtual void FixedUpdate()
     {
         if(direction > 0 || direction < 0) ChangeDirection();
     }
 
+#region Direction Changes
 protected private void ChangeDirection()
     {  
         if(!facingRight && direction > 0)
@@ -47,4 +49,9 @@ protected private void ChangeDirection()
         }
 
     }
+
+#endregion
+
+
+
 }

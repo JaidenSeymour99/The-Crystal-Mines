@@ -19,7 +19,8 @@ public class Movement : Player
         rb.linearVelocity = new Vector2(direction * speed, rb.linearVelocityY);
     }
 
-    public void Move (InputAction.CallbackContext context) 
+#region Actions
+    public void Move(InputAction.CallbackContext context) 
     {
         if(context.performed)
         {
@@ -30,4 +31,15 @@ public class Movement : Player
             direction = context.ReadValue<Vector2>().x;
         } 
     }
+
+    public void Jump(InputAction.CallbackContext context)
+    {
+        
+    }
+
+#endregion
+
+
+
+
 }
