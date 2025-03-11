@@ -8,7 +8,7 @@ public class PlayerIdleState : PlayerBaseState
         Debug.Log("idle");
         Animator animator = player.GetComponent<Animator>();
         animator.SetFloat("speed", Mathf.Abs(player.direction));
-        animator.SetBool("idle", true);
+        animator.SetBool("isIdle", true);
     }
 
     public override void UpdateState(PlayerStateManager player)

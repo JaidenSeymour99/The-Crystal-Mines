@@ -1,4 +1,5 @@
 using Unity.VisualScripting;
+using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -10,12 +11,14 @@ public class PlayerStateManager : MonoBehaviour
     public PlayerIdleState IdleState = new();
     public PlayerMoveState MoveState = new();
 
+
     [SerializeField] protected private float maxSpeed = 8.0f;
     [SerializeField] protected private float speed;
     public float direction;
     public bool facingRight = true;
 
     public Rigidbody2D rb;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -37,6 +40,8 @@ public class PlayerStateManager : MonoBehaviour
 
 
     }
+
+
 
     public void Move(InputAction.CallbackContext context) 
     {
