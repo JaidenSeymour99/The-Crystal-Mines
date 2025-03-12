@@ -6,8 +6,8 @@ public class Character : MonoBehaviour
 
     [SerializeField] protected private float maxSpeed = 8.0f;
     [SerializeField] protected private float speed;
-    //public Vector2 currentMovement;
-    public float currentMovement;
+    
+    public Vector2 currentDirection;
     public bool facingRight = true;
 
     public virtual void Start()
@@ -18,17 +18,17 @@ public class Character : MonoBehaviour
 
     public virtual void FixedUpdate()
     {
-        if(currentMovement > 0 || currentMovement < 0) ChangeDirection();
+        if(currentDirection.x > 0 || currentDirection.x < 0) ChangeDirection();
     }
 
 #region Direction Changes
 protected private void ChangeDirection()
     {  
-        if(!facingRight && currentMovement > 0)
+        if(!facingRight && currentDirection.x > 0)
         {
             Flip();
         }
-        else if (facingRight && currentMovement < 0)
+        else if (facingRight && currentDirection.x < 0)
         {
             Flip();
         }
